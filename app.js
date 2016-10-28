@@ -15,6 +15,7 @@ var db = require('./config/db');
 mongoose.connect(db.url);
 require('./model/User');
 require('./config/passport');
+require('./model/Location');
 
 var routes = require('./routes/index');
 
