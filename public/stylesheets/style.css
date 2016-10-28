@@ -1,8 +1,9 @@
 body {
+  background: url("/img/background.jpg") repeat;
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+.nav-btn,
+.nav-btn:hover {
+  color: #000;
 }
