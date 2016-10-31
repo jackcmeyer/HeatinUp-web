@@ -1,3 +1,9 @@
-<div>
+<button ng-click="vm.changeGradient()">Gradient</button>
+<button ng-click="vm.changeRadius()">Radius</button>
+<button ng-click="vm.changeOpacity()">Opacity</button>
 
+<div>
+    <ui-gmap-google-map center="vm.mapProperties.center" zoom="vm.mapProperties.zoom">
+        <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show=true onCreated="vm.mapProperties.heatLayerCallback"></ui-gmap-layer>
+    </ui-gmap-google-map>
 </div>

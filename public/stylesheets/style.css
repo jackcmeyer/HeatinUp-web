@@ -7,3 +7,7 @@ body {
 .nav-btn:hover {
   color: #000;
 }
+
+.angular-google-map-container {
+  height: 600px;
+}
