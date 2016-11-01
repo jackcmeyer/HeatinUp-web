@@ -4,9 +4,9 @@
     angular.module('heatin_up')
         .factory('loginService', loginService);
 
-    loginService.$inject = ['$window', '$http'];
+    loginService.$inject = ['$http'];
 
-    function loginService($window, $http) {
+    function loginService($http) {
 
         var loggedIn = false;
 
