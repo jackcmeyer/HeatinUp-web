@@ -8,9 +8,12 @@
 
     function homeController(homeService, loginService, $location) {
         var vm = this;
+        vm.username = loginService.getUsername();
         vm.mapProperties = {};
         vm.heatmapLayer = {};
         vm.activate = activate;
+        vm.logout = logout;
+        vm.toggleHeatmap = toggleHeatmap;
         vm.changeGradient = changeGradient;
         vm.changeRadius = changeRadius;
         vm.changeOpacity = changeOpacity;
@@ -27,11 +30,21 @@
                     longitude: -122.434
                 },
                 zoom: 13,
+                show: true,
                 heatLayerCallback: function (layer) {
                     vm.heatmapLayer = layer;
                     vm.heatmapLayer.setData(homeService.getDataPoints());
                 }
             };
+        }
+
+        function logout() {
+            loginService.logout();
+            $location.path('/login');
+        }
+
+        function toggleHeatmap() {
+            vm.mapProperties.show = !vm.mapProperties.show;
         }
 
         function changeGradient() {

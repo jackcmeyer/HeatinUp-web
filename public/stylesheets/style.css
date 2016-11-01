@@ -9,5 +9,17 @@ body {
 }
 
 .angular-google-map-container {
-  height: 600px;
+  height: 500px;
+}
+
+#floating-panel {
+  position: absolute;
+  top: 130px;
+  left: 165px;
+  z-index: 5;
+}
+
+.btn-map {
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 11px;
 }

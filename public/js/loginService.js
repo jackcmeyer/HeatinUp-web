@@ -9,18 +9,26 @@
     function loginService($http) {
 
         var loggedIn = false;
+        var username = "";
 
         return {
+            getUsername: getUsername,
             isLoggedIn: isLoggedIn,
             login: login,
             logout: logout
         };
+
+        function getUsername() {
+            return username;
+        }
 
         function isLoggedIn() {
             return loggedIn;
         }
 
         function login(user) {
+            username = user.username;
+
             return $http({
                 method: 'POST',
                 url: '/api/login',
@@ -44,6 +52,7 @@
 
         function logout() {
             loggedIn = false;
+            username = "";
         }
     }
 

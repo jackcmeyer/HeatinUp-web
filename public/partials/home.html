@@ -1,9 +1,16 @@
-<button ng-click="vm.changeGradient()">Gradient</button>
-<button ng-click="vm.changeRadius()">Radius</button>
-<button ng-click="vm.changeOpacity()">Opacity</button>
-
+<div style="text-align: center">
+    <h1 style="display: inline-block;">{{vm.username}}'s Heatmap</h1>
+    <button class="btn btn-default" style="margin-top: -12px" ng-click="vm.logout()">Logout <span class="glyphicon glyphicon-log-out"></span></button>
+</div>
 <div>
+    <div class="btn-group" id="floating-panel">
+        <button class="btn btn-default btn-map" ng-click="vm.toggleHeatmap()">Toggle Heatmap</button>
+        <button class="btn btn-default btn-map" ng-click="vm.changeGradient()">Change gradient</button>
+        <button class="btn btn-default btn-map" ng-click="vm.changeRadius()">Change radius</button>
+        <button class="btn btn-default btn-map" ng-click="vm.changeOpacity()">Change opacity</button>
+    </div>
+
     <ui-gmap-google-map center="vm.mapProperties.center" zoom="vm.mapProperties.zoom">
-        <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show=true onCreated="vm.mapProperties.heatLayerCallback"></ui-gmap-layer>
+        <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="vm.mapProperties.show" onCreated="vm.mapProperties.heatLayerCallback"></ui-gmap-layer>
     </ui-gmap-google-map>
 </div>
