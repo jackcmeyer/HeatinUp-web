@@ -7,31 +7,17 @@
     loginService.$inject = ['$window', '$http'];
 
     function loginService($window, $http) {
+
+        var loggedIn = false;
+
         return {
-            saveToken: saveToken,
-            getToken: getToken,
             isLoggedIn: isLoggedIn,
             login: login,
             logout: logout
         };
 
-        function saveToken(token) {
-            $window.localStorage["heatin_up-token"] = token;
-        }
-
-        function getToken() {
-            return $window.localStorage["heatin_up-token"];
-        }
-
         function isLoggedIn() {
-            var token = getToken();
-
-            if(token){
-                var payload = JSON.parse($window.atob(token.split('.')[1]));
-                return payload.exp > Date.now() / 1000;
-            } else {
-                return false;
-            }
+            return loggedIn;
         }
 
         function login(user) {
@@ -39,14 +25,16 @@
                 method: 'POST',
                 url: '/api/login',
                 data: {
-                    user: user
+                    username: user.username,
+                    password: user.password
                 }
             })
                 .then(success)
                 .catch(fail);
 
-            function success(data) {
-                return saveToken(data.token);
+            function success(response) {
+                loggedIn = true;
+                return response.data;
             }
 
             function fail(error) {
@@ -55,7 +43,7 @@
         }
 
         function logout() {
-            $window.localStorage.removeItem("heatin_up-token");
+            loggedIn = false;
         }
     }
 
