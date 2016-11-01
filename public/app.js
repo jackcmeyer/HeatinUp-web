@@ -26,7 +26,9 @@
             })
             .state('login', {
                 url: '/login',
-                templateUrl: 'partials/login.html'
+                templateUrl: 'partials/login.html',
+                controller: 'loginController',
+                controllerAs: 'vm'
             });
     }
 })();

@@ -13,15 +13,15 @@
             <form novalidate>
                 <div class="col-md-offset-2 col-md-8 input-group">
                     <span class="input-group-addon">Username</span>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" ng-bind="vm.user.username">
                 </div>
                 <div class="col-md-offset-2 col-md-8 input-group">
                     <span class="input-group-addon">Password</span>
-                    <input type="password" class="form-control">
+                    <input type="password" class="form-control" ng-bind="vm.user.password">
                 </div>
                 <br>
                 <div class="col-md-offset-2 col-md-8" style="text-align: center">
-                    <button class="btn btn-primary" type="submit">Log In</button>
+                    <button class="btn btn-primary" type="submit" ng-click="vm.login()">Log In</button>
                     <button class="btn btn-success">Create Account</button>
                 </div>
             </form>

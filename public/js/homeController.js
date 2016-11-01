@@ -4,9 +4,9 @@
     angular.module("heatin_up")
         .controller('homeController', homeController);
 
-    homeController.$inject = ['homeService'];
+    homeController.$inject = ['homeService', 'loginService', '$location'];
 
-    function homeController(homeService) {
+    function homeController(homeService, loginService, $location) {
         var vm = this;
         vm.mapProperties = {};
         vm.heatmapLayer = {};
@@ -18,6 +18,9 @@
         activate();
 
         function activate() {
+            if(!loginService.isLoggedIn())
+                $location.path('/login');
+
             vm.mapProperties = {
                 center: {
                     latitude: 37.775,
