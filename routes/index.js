@@ -94,4 +94,49 @@ router.post('/api/getLocationDataForUser', function(req, res, next) {
   });
 });
 
+router.post('/api/getLocationDataForAll', function(req, res, next) {
+  var data = Location.find({}, function(error, results) {
+    if(error) {
+      res.status(400).json("server error");
+    }
+
+    else {
+      console.log(results);
+      res.json(results);
+    }
+  });
+});
+
+router.post('/api/getLocationDataForUserByDate', function(req, res, next) {
+  if(!req.body.username || !req.body.time) {
+    return res.status(400).json({message: 'Please fill out all fields'});
+  }
+
+  var data = Location.find({username: req.body.username, time: req.body.time}, function(error, results) {
+    if(error) {
+      res.status(400).json("server error");
+    } else {
+      console.log(results);
+      res.json(results);
+    }
+  });
+});
+
+router.post('/api/getLocationDataForAllByDate', function(req, res, next) {
+  if(!req.body.time) {
+    return res.status(400).json({message: 'Please fill out all fields'});
+  }
+
+  var data = Location.find({time: req.body.time}, function(error, results) {
+    if(error) {
+      res.status(400).json("server error");
+    }
+
+    else {
+      console.log(results);
+      res.json(results);
+    }
+  });
+});
+
 module.exports = router;
