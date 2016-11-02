@@ -9,6 +9,7 @@
     function homeController(homeService, loginService, $location) {
         var vm = this;
         vm.username = loginService.getUsername();
+        vm.mapReady = 0;
         vm.mapProperties = {};
         vm.heatmapLayer = {};
         vm.activate = activate;
@@ -26,16 +27,51 @@
 
             vm.mapProperties = {
                 center: {
-                    latitude: 37.775,
-                    longitude: -122.434
+                    latitude: 42.038,
+                    longitude: -93.644
                 },
                 zoom: 13,
                 show: true,
+                data: {},
                 heatLayerCallback: function (layer) {
                     vm.heatmapLayer = layer;
-                    vm.heatmapLayer.setData(homeService.getDataPoints());
+                    // vm.heatmapLayer.map.panTo(new google.maps.LatLng(vm.mapProperties.updatedCenter.latitude, vm.mapProperties.updatedCenter.longitude));
+
+                    var dataArray = [];
+                    for(var i = 0; i < vm.mapProperties.data.length; i++)
+                    {
+                        dataArray.push(new google.maps.LatLng(vm.mapProperties.data[i].latitude, vm.mapProperties.data[i].longitude));
+                    }
+
+                    vm.heatmapLayer.setData(dataArray);
                 }
             };
+
+            homeService.getMapCenter()
+                .then(centerSuccess)
+                .catch(centerFail);
+
+            homeService.getDataPoints()
+                .then(dataSuccess)
+                .catch(dataFail);
+
+            function centerSuccess(response) {
+                //TODO Figure out how to pan the map to coords
+                vm.mapReady++;
+            }
+
+            function centerFail(error) {
+                console.log(error);
+            }
+
+            function dataSuccess(response) {
+                vm.mapProperties.data = response;
+                vm.mapReady++;
+            }
+
+            function dataFail(error) {
+                console.log(error);
+            }
         }
 
         function logout() {
