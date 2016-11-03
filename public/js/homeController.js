@@ -49,19 +49,15 @@
 
             homeService.getMapCenter()
                 .then(centerSuccess)
-                .catch(centerFail);
+                .catch(fail);
 
             homeService.getDataPoints()
                 .then(dataSuccess)
-                .catch(dataFail);
+                .catch(fail);
 
             function centerSuccess(response) {
                 //TODO Figure out how to pan the map to coords
                 vm.mapReady++;
-            }
-
-            function centerFail(error) {
-                console.log(error);
             }
 
             function dataSuccess(response) {
@@ -69,7 +65,7 @@
                 vm.mapReady++;
             }
 
-            function dataFail(error) {
+            function fail(error) {
                 console.log(error);
             }
         }
