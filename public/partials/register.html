@@ -3,21 +3,29 @@
         <div class="col-md-offset-4 col-md-4 well" style="background: #fafafa">
             <h2 style="text-align: center">
                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                User Login
+                User Registration
             </h2>
             <form novalidate>
                 <div class="col-md-offset-2 col-md-8 input-group">
                     <span class="input-group-addon">Username</span>
                     <input type="text" class="form-control" ng-model="vm.user.username">
                 </div>
+                <div class="col-md-offset-2 col-md-8 alert alert-warning" role="alert" ng-if="vm.passwordError != ''">
+                    <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
+                    {{"  " + vm.passwordError}}
+                </div>
                 <div class="col-md-offset-2 col-md-8 input-group">
                     <span class="input-group-addon">Password</span>
                     <input type="password" class="form-control" ng-model="vm.user.password">
                 </div>
+                <div class="col-md-offset-2 col-md-8 input-group">
+                    <span class="input-group-addon">Confirm Password</span>
+                    <input type="password" class="form-control" ng-model="vm.user.confirmPassword">
+                </div>
                 <br>
                 <div class="col-md-offset-2 col-md-8" style="text-align: center">
-                    <button class="btn btn-primary" type="submit" ng-click="vm.login()">Log In</button>
-                    <button class="btn btn-success" ng-click="vm.register()">Create Account</button>
+                    <button class="btn btn-primary" type="submit" ng-click="vm.createAccount()">Create Account</button>
+                    <button class="btn btn-danger" ng-click="vm.cancel()">Cancel</button>
                 </div>
             </form>
         </div>

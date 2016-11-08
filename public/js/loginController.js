@@ -8,8 +8,9 @@
 
     function loginController(loginService, $location) {
         var vm = this;
-        vm.user = {};
+        vm.user = {username:'', password: ''};
         vm.login = login;
+        vm.register = register;
 
         function login() {
             if(vm.user.username == '' || vm.user.password == '')
@@ -26,6 +27,10 @@
             function fail() {
                 console.log("Error in login controller. Failed at function login...");
             }
+        }
+
+        function register() {
+            $location.path('/register');
         }
     }
 

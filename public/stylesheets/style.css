@@ -23,3 +23,7 @@ body {
   font-family: Roboto, Arial, sans-serif;
   font-size: 11px;
 }
+
+.alert {
+  margin-bottom: 0px;
+}

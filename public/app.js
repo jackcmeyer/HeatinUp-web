@@ -29,6 +29,12 @@
                 templateUrl: 'partials/login.html',
                 controller: 'loginController',
                 controllerAs: 'vm'
+            })
+            .state('register', {
+                url: '/register',
+                templateUrl: 'partials/register.html',
+                controller: 'registerController',
+                controllerAs: 'vm'
             });
     }
 })();
