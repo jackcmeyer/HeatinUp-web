@@ -9,6 +9,8 @@
     function homeController(homeService, loginService, $location) {
         var vm = this;
         vm.username = loginService.getUsername();
+        vm.date = {month: "", day: "", year: ""};
+        vm.showingFilteredData = false;
         vm.mapReady = 0;
         vm.mapProperties = {};
         vm.heatmapLayer = {};
@@ -18,6 +20,8 @@
         vm.changeGradient = changeGradient;
         vm.changeRadius = changeRadius;
         vm.changeOpacity = changeOpacity;
+        vm.filterByDate = filterByDate;
+        vm.resetDates = resetDates;
 
         activate();
 
@@ -105,6 +109,57 @@
 
         function changeOpacity() {
             vm.heatmapLayer.set('opacity', vm.heatmapLayer.get('opacity') ? null : 0.5);
+        }
+
+        function filterByDate() {
+            if(vm.date.month.length < 2 || vm.date.day.length < 2 || vm.date.year.length < 2)
+                return;
+
+            var date = vm.date.month + "-" + vm.date.day + "-" + vm.date.year;
+
+            homeService.getDataPointsForDate(date)
+                .then(success)
+                .catch(fail);
+
+            function success(response) {
+                vm.showingFilteredData = true;
+                vm.mapProperties.data = response;
+
+                var dataArray = [];
+                for(var i = 0; i < vm.mapProperties.data.length; i++)
+                {
+                    dataArray.push(new google.maps.LatLng(vm.mapProperties.data[i].latitude, vm.mapProperties.data[i].longitude));
+                }
+
+                vm.heatmapLayer.setData(dataArray);
+            }
+
+            function fail(error) {
+                console.log(error);
+            }
+        }
+
+        function resetDates() {
+            homeService.getDataPoints()
+                .then(success)
+                .catch(fail);
+
+            function success(response) {
+                vm.showingFilteredData = false;
+                vm.mapProperties.data = response;
+
+                var dataArray = [];
+                for(var i = 0; i < vm.mapProperties.data.length; i++)
+                {
+                    dataArray.push(new google.maps.LatLng(vm.mapProperties.data[i].latitude, vm.mapProperties.data[i].longitude));
+                }
+
+                vm.heatmapLayer.setData(dataArray);
+            }
+
+            function fail(error) {
+                console.log(error);
+            }
         }
     }
 

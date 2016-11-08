@@ -3,6 +3,21 @@
     <button class="btn btn-default" style="margin-top: -12px" ng-click="vm.logout()">Logout <span class="glyphicon glyphicon-log-out"></span></button>
 </div>
 <div ng-if="vm.mapReady >= 2">
+    <h4>Filter Location By Date</h4>
+    <form class="form-inline" style="margin-bottom: 10px">
+        <div class="form-group">
+            <input class="form-control col-lg-2" type="text" placeholder="MM" minlength="2" maxlength="2" ng-model="vm.date.month" required/>
+        </div>
+        <div class="form-group">
+            <input class="form-control col-lg-2" type="text" placeholder="DD" minlength="2" maxlength="2" ng-model="vm.date.day" required/>
+        </div>
+        <div class="form-group">
+            <input class="form-control col-lg-2" type="text" placeholder="yyyy" minlength="4" maxlength="4" ng-model="vm.date.year" required/>
+        </div>
+        <button class="btn btn-default" type="submit" ng-click="vm.filterByDate()">Go</button>
+        <button class="btn btn-warning" ng-click="vm.resetDates()" ng-if="vm.showingFilteredData">Reset</button>
+    </form>
+
     <div class="btn-group" id="floating-panel">
         <button class="btn btn-default btn-map" ng-click="vm.toggleHeatmap()">Toggle Heatmap</button>
         <button class="btn btn-default btn-map" ng-click="vm.changeGradient()">Change gradient</button>

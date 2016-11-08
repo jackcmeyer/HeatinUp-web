@@ -9,7 +9,8 @@
     function homeService($http, loginService) {
         return {
             getMapCenter: getMapCenter,
-            getDataPoints: getDataPoints
+            getDataPoints: getDataPoints,
+            getDataPointsForDate: getDataPointsForDate,
         };
 
         function getMapCenter() {
@@ -65,6 +66,34 @@
             }
 
             function fail(error) {
+                console.log(error);
+            }
+        }
+
+        function getDataPointsForDate(date) {
+            return $http({
+                method: 'POST',
+                url: '/api/getLocationDataForUserByDate',
+                data: {
+                    username: loginService.getUsername(),
+                    time: date
+                }
+            })
+                .then(success)
+                .catch(fail);
+
+            function success(response) {
+                var returnVal = [];
+
+                for(var i = 0; i < response.data.length; i++) {
+                    returnVal.push({latitude: response.data[i].latitude, longitude: response.data[i].longitude});
+                }
+
+                return returnVal;
+            }
+
+            function fail(error) {
+                console.log("Error in GetDataPointsForDate()");
                 console.log(error);
             }
         }
