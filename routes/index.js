@@ -139,4 +139,46 @@ router.post('/api/getLocationDataForAllByDate', function(req, res, next) {
   });
 });
 
+router.post('/api/getIntersection', function(req, res, next) {
+  if(!req.body.username1 || !req.body.username2 || !req.body.time) {
+    return res.status(400).json({message: 'Please fill out all fields'});
+  }
+
+  Location.find({username: req.body.username1, time: req.body.time}, function(error, results) {
+    if(error) {
+      res.status(400).json("server error");
+    }
+
+    else {
+      user1data = results;
+
+      Location.find({username: req.body.username2, time: req.body.time}, function(error, results) {
+        if(error) {
+          res.status(400).json("server error");
+        }
+
+        else {
+          user2data = results;
+          console.log(user1data);
+          console.log(user2data);
+
+
+          var intersectionPoints = [];
+          for(var i = 0; i < user1data.length; i++) {
+            for(var j = 0; j < user2data.length; j++) {
+
+              console.log(user1data[i].latitude + ", " + user1data[i].longitude + " === " + user2data[j].latitude + ", " + user2data[j].longitude);
+              if((user1data[i].latitude == user2data[j].latitude) && (user1data[i].longitude == user2data[j].longitude)) {
+                intersectionPoints.push({'latitude': user1data[i].latitude, 'longitude': user1data[i].longitude});
+              }
+            }
+          }
+
+          res.json(intersectionPoints);
+        }
+      });
+    }
+  });
+});
+
 module.exports = router;
