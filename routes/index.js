@@ -6,6 +6,7 @@ var path = require('path');
 var passport = require('passport');
 var User = mongoose.model('User');
 var Location = mongoose.model('Location');
+var Company = mongoose.model('Company');
 var jwt = require('express-jwt');
 
 
@@ -53,6 +54,13 @@ router.post('/api/login', function(req, res, next){
   })(req, res, next);
 });
 
+/**
+ * Adds a new location for a username
+ *
+ * @param username {String}
+ * @param latitude {Number}
+ * @param longitude {Number}
+ */
 router.post('/api/addNewLocation', function(req, res, next) {
   if(!req.body.latitude || !req.body.longitude || !req.body.username) {
     return res.status(400).json({message: 'Please fill out all fields'});
@@ -77,6 +85,11 @@ router.post('/api/addNewLocation', function(req, res, next) {
 
 });
 
+/**
+ * Gets all location data for a user.
+ *
+ * @param username {String}
+ */
 router.post('/api/getLocationDataForUser', function(req, res, next) {
   if(!req.body.username) {
     return res.status(400).json({message: 'Please fill out all fields'});
@@ -94,6 +107,9 @@ router.post('/api/getLocationDataForUser', function(req, res, next) {
   });
 });
 
+/**
+ * Gets all locatino data in the database.
+ */
 router.post('/api/getLocationDataForAll', function(req, res, next) {
   var data = Location.find({}, function(error, results) {
     if(error) {
@@ -107,6 +123,12 @@ router.post('/api/getLocationDataForAll', function(req, res, next) {
   });
 });
 
+/**
+ * Get Location Data For User By Date
+ *
+ * @param username {String}
+ * @param time {MM-DD-YYYY}
+ */
 router.post('/api/getLocationDataForUserByDate', function(req, res, next) {
   if(!req.body.username || !req.body.time) {
     return res.status(400).json({message: 'Please fill out all fields'});
@@ -122,6 +144,11 @@ router.post('/api/getLocationDataForUserByDate', function(req, res, next) {
   });
 });
 
+/**
+ * Gets the location data for all the users.
+ *
+ * @param time {MM-DD-YYYY}
+ */
 router.post('/api/getLocationDataForAllByDate', function(req, res, next) {
   if(!req.body.time) {
     return res.status(400).json({message: 'Please fill out all fields'});
@@ -135,6 +162,36 @@ router.post('/api/getLocationDataForAllByDate', function(req, res, next) {
     else {
       console.log(results);
       res.json(results);
+    }
+  });
+});
+
+
+// COMPANY STUFF
+
+/**
+ * Creates a new company
+ *
+ * @param name {String} The name of the company
+ * @param owner {String} The owner's username
+ */
+router.post('/api/createCompany', function(req, res, next) {
+  if(!req.body.name || !req.body.owner) {
+    return res.status(400).json({message: 'Please fill out all fields'});
+  }
+
+  var company = new Company();
+  company.owner = req.body.owner;
+  company.name = req.body.name;
+  company.members.push(req.body.owner);
+
+  company.save(function(error) {
+    if(error) {
+      return next(error);
+    }
+
+    else {
+      return res.status(200).json({message: "Success"});
     }
   });
 });

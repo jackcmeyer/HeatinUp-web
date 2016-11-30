@@ -12,10 +12,11 @@ var passport = require('passport');
 
 // database setup
 var db = require('./config/db');
-mongoose.connect(db.prod_url);
+mongoose.connect(db.url);
 require('./model/User');
 require('./config/passport');
 require('./model/Location');
+require('./model/Company');
 
 var routes = require('./routes/index');
 
