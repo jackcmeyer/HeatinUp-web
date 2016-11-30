@@ -248,6 +248,84 @@ router.post('/api/createCompany', function(req, res, next) {
   });
 });
 
+
+/**
+ * Add a new member to a company
+ *
+ * @param companyID {String} The id of a company
+ * @param username {String} Username to add
+ */
+router.post('/api/addMemberToCompany', function(req, res, next) {
+
+  console.log(req.body);
+
+  if(!req.body.companyID || !req.body.username) {
+    return res.status(400).json({message: 'Please fill out all fields'});
+  }
+
+  Company.findOne({"_id": req.body.companyID}, function(error, result) {
+
+    // if error finding company
+    if(error) {
+      console.log("DID NOT FIND");
+      console.log(error)
+      return next(error);
+    }
+
+    // no error finding company
+    else {
+
+        // check if the username is a real username
+        User.findOne({"username": req.body.username}, function(error, user) {
+
+          // error finding username
+          if(error) {
+            return next(error);
+          }
+
+          // if the username does not exist.
+          if(!user) {
+            return res.status(400).json({message: "Username does nto exist"});
+          }
+
+          // if the username does exist.
+          else {
+
+              // if the username already is in the company
+              if (result.members.indexOf(req.body.username) > -1) {
+                  return res.status(400).json({message: 'Username is already in the company.'})
+              }
+
+              // if the username is not in the company
+              else {
+
+                  // add the username to the members list
+                  result.members.push(req.body.username);
+
+                  // save the udpated company
+                  result.save(function(error) {
+
+                    // error saving the company
+                    if(error) {
+                          console.log("DID NOT SAVE");
+                          return next(error);
+                      }
+
+                      // success!
+                      else {
+                          return res.status(200).json({message: 'Success'});
+                      }
+                  });
+              }
+          }
+
+        });
+    }
+
+  })
+
+});
+
 module.exports = router;
 
 
