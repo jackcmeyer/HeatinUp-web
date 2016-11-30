@@ -85,6 +85,8 @@ router.post('/api/addNewLocation', function(req, res, next) {
 
 });
 
+// LOCATION STUFF
+
 /**
  * Gets all location data for a user.
  *
@@ -215,7 +217,6 @@ router.post('/api/getIntersection', function(req, res, next) {
                 }
             });
         }
-
     });
 });
 
