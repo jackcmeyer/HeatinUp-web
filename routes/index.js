@@ -110,7 +110,7 @@ router.post('/api/getLocationDataForUser', function(req, res, next) {
 });
 
 /**
- * Gets all locatino data in the database.
+ * Gets all locating data in the database.
  */
 router.post('/api/getLocationDataForAll', function(req, res, next) {
   var data = Location.find({}, function(error, results) {
@@ -248,6 +248,95 @@ router.post('/api/createCompany', function(req, res, next) {
   });
 });
 
+/**
+ * Gets all companies for an owner
+ *
+ * @param username {String} The owner's username
+ */
+router.post('/api/getCompaniesForOwner', function(req, res, next) {
+  if(!req.body.username) {
+    return res.status(400).json({message: 'Please fill out all fields'});
+  }
+
+  Company.find({'owner': req.body.username}, function(error, results) {
+      if(error) {
+          return next(error);
+      }
+
+      else {
+          return res.json(results)
+      }
+  });
+});
+
+/**
+ * Get all company location data for company
+ *
+ * @param companyID {Stringg} The company id
+ */
+router.post('/api/getAllLocationDataForCompany', function(req, res, next) {
+   if(!req.body.companyID) {
+       return res.status(400).json({message: 'Please fill out all fields'});
+   }
+
+    Company.findOne({"_id": req.body.companyID}, function(error, result) {
+       if(error) {
+           return next(error);
+       }
+
+       else {
+            Location.find({'username': {$in: result.members}}, function(error, results) {
+                if(error){
+                    return next(error);
+                }
+
+                else {
+                    res.json(results);
+                }
+
+
+            })
+
+       }
+    });
+
+});
+
+/**
+ * Get company location data by date.
+ *
+ * @pram comanyID {String} The company id
+ * @param time {MM-DD-YYYY} The day
+ */
+router.post('/api/getAllLocationDataForCompanyByDate', function(req, res, next) {
+   if(!req.body.companyID || !req.body.time) {
+       return res.status(400).json({message: 'Please fill out all fields'});
+   }
+
+    Company.findOne({"_id": req.body.companyID}, function(error, result) {
+        if(error) {
+            return next(error);
+        }
+
+        else {
+            Location.find({'username': {$in: result.members}, 'time': req.body.time}, function(error, results) {
+                if(error){
+                    return next(error);
+                }
+
+                else {
+                    res.json(results);
+                }
+
+
+            })
+
+        }
+    });
+
+
+});
+
 
 /**
  * Add a new member to a company
@@ -268,7 +357,7 @@ router.post('/api/addMemberToCompany', function(req, res, next) {
     // if error finding company
     if(error) {
       console.log("DID NOT FIND");
-      console.log(error)
+      console.log(error);
       return next(error);
     }
 
@@ -325,6 +414,19 @@ router.post('/api/addMemberToCompany', function(req, res, next) {
   })
 
 });
+
+
+var getLocationDataForUser = function(username, callback) {
+     Location.find({username: username}, function(error, results) {
+        if(error) {
+            return callback(null);
+        }
+
+        else {
+            return callback(results);
+        }
+    })
+}
 
 module.exports = router;
 
