@@ -16,6 +16,7 @@ mongoose.connect(db.prod_url);
 require('./model/User');
 require('./config/passport');
 require('./model/Location');
+require('./model/Company');
 
 var routes = require('./routes/index');
 
