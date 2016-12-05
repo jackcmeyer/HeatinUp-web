@@ -14,8 +14,8 @@ body {
 
 #floating-panel {
   position: absolute;
-  top: 214px;
-  left: 165px;
+  top: 11px;
+  left: 125px;
   z-index: 5;
 }
 

@@ -9,8 +9,10 @@
     function homeService($http, loginService) {
         return {
             getMapCenter: getMapCenter,
-            getDataPoints: getDataPoints,
-            getDataPointsForDate: getDataPointsForDate,
+            getLocationDataForUser: getLocationDataForUser,
+            getLocationDataForAll: getLocationDataForAll,
+            getLocationDataForUserByDate: getLocationDataForUserByDate,
+            getLocationDataForAllByDate: getLocationDataForAllByDate
         };
 
         function getMapCenter() {
@@ -44,12 +46,12 @@
             }
         }
 
-        function getDataPoints() {
+        function getLocationDataForUser(username) {
             return $http({
                 method: 'POST',
                 url: '/api/getLocationDataForUser',
                 data: {
-                    username: loginService.getUsername()
+                    username: username
                 }
             })
                 .then(success)
@@ -66,16 +68,41 @@
             }
 
             function fail(error) {
+                console.log("Error in GetLocationDataForUser()");
+                console.log(error);
+            }
+        }
+        
+        function getLocationDataForAll() {
+            return $http({
+                method: 'POST',
+                url: '/api/getLocationDataForAll'
+            })
+                .then(success)
+                .catch(fail);
+
+            function success(response) {
+                var returnVal = [];
+
+                for(var i = 0; i < response.data.length; i++) {
+                    returnVal.push({latitude: response.data[i].latitude, longitude: response.data[i].longitude});
+                }
+
+                return returnVal;
+            }
+
+            function fail(error) {
+                console.log("Error in GetLocationDataForAll()");
                 console.log(error);
             }
         }
 
-        function getDataPointsForDate(date) {
+        function getLocationDataForUserByDate(date, username) {
             return $http({
                 method: 'POST',
                 url: '/api/getLocationDataForUserByDate',
                 data: {
-                    username: loginService.getUsername(),
+                    username: username,
                     time: date
                 }
             })
@@ -94,6 +121,33 @@
 
             function fail(error) {
                 console.log("Error in GetDataPointsForDate()");
+                console.log(error);
+            }
+        }
+
+        function getLocationDataForAllByDate(date) {
+            return $http({
+                method: 'POST',
+                url: '/api/getLocationDataForAllByDate',
+                data: {
+                    time: date
+                }
+            })
+                .then(success)
+                .catch(fail);
+
+            function success(response) {
+                var returnVal = [];
+
+                for(var i = 0; i < response.data.length; i++) {
+                    returnVal.push({latitude: response.data[i].latitude, longitude: response.data[i].longitude});
+                }
+
+                return returnVal;
+            }
+
+            function fail(error) {
+                console.log("Error in GetLocationDataForAllByDate()");
                 console.log(error);
             }
         }
