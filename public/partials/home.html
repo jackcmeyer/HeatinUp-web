@@ -1,31 +1,54 @@
 <div style="text-align: center">
-    <h1 style="display: inline-block;">{{vm.username}}'s Heatmap</h1>
+    <h1 style="display: inline-block;">Showing {{vm.currentlyShowing}}'s Heatmap</h1>
     <button class="btn btn-default" style="margin-top: -12px" ng-click="vm.logout()">Logout <span class="glyphicon glyphicon-log-out"></span></button>
 </div>
+<hr>
 <div ng-if="vm.mapReady >= 2">
-    <h4>Filter Location By Date</h4>
-    <form class="form-inline" style="margin-bottom: 10px">
-        <div class="form-group">
-            <input class="form-control col-lg-2" type="text" placeholder="MM" minlength="2" maxlength="2" ng-model="vm.date.month" required/>
-        </div>
-        <div class="form-group">
-            <input class="form-control col-lg-2" type="text" placeholder="DD" minlength="2" maxlength="2" ng-model="vm.date.day" required/>
-        </div>
-        <div class="form-group">
-            <input class="form-control col-lg-2" type="text" placeholder="yyyy" minlength="4" maxlength="4" ng-model="vm.date.year" required/>
-        </div>
-        <button class="btn btn-default" type="submit" ng-click="vm.filterByDate()">Go</button>
-        <button class="btn btn-warning" ng-click="vm.resetDates()" ng-if="vm.showingFilteredData">Reset</button>
-    </form>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="btn-group" id="floating-panel">
+                <button class="btn btn-default btn-map" ng-click="vm.toggleHeatmap()">Toggle Heatmap</button>
+                <button class="btn btn-default btn-map" ng-click="vm.changeGradient()">Change gradient</button>
+                <button class="btn btn-default btn-map" ng-click="vm.changeRadius()">Change radius</button>
+                <button class="btn btn-default btn-map" ng-click="vm.changeOpacity()">Change opacity</button>
+            </div>
 
-    <div class="btn-group" id="floating-panel">
-        <button class="btn btn-default btn-map" ng-click="vm.toggleHeatmap()">Toggle Heatmap</button>
-        <button class="btn btn-default btn-map" ng-click="vm.changeGradient()">Change gradient</button>
-        <button class="btn btn-default btn-map" ng-click="vm.changeRadius()">Change radius</button>
-        <button class="btn btn-default btn-map" ng-click="vm.changeOpacity()">Change opacity</button>
+            <ui-gmap-google-map center="vm.mapProperties.center" zoom="vm.mapProperties.zoom">
+                <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="vm.mapProperties.show" onCreated="vm.mapProperties.heatLayerCallback"></ui-gmap-layer>
+            </ui-gmap-google-map>
+        </div>
+        <div class="col-md-3">
+            <h4>Date Filter</h4>
+            <form class="col-md-12">
+                <div class="row">
+                    <input class="form-control" type="text" placeholder="MM" minlength="2" maxlength="2" ng-model="vm.date.month" required/>
+                </div>
+                <div class="row">
+                    <input class="form-control"  type="text" placeholder="DD" minlength="2" maxlength="2" ng-model="vm.date.day" required/>
+                </div>
+                <div class="row">
+                    <input  class="form-control" type="text" placeholder="yyyy" minlength="4" maxlength="4" ng-model="vm.date.year" required/>
+                </div>
+                <div class="row">
+                    <button class="btn btn-primary" type="submit" ng-click="vm.filterByDate()">Go</button>
+                    <button class="btn btn-warning" ng-click="vm.resetDates()" ng-if="vm.dateFilter">Reset</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-3">
+            <h4>User Filter</h4>
+            <form class="col-md-12">
+                <div class="row">
+                    <input type="checkbox" ng-model="vm.allUsers"/>All Users
+                </div>
+                <div class="row">
+                    <input class="form-control" type="text" placeholder="Username" ng-model="vm.userSearch"/>
+                </div>
+                <div class="row">
+                    <button class="btn btn-primary" type="submit" ng-click="vm.filterByUsername()">Search</button>
+                    <button class="btn btn-warning" ng-click="vm.resetUsers()" ng-if="vm.userFilter">Reset</button>
+                </div>
+            </form>
+        </div>
     </div>
-
-    <ui-gmap-google-map center="vm.mapProperties.center" zoom="vm.mapProperties.zoom">
-        <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="vm.mapProperties.show" onCreated="vm.mapProperties.heatLayerCallback"></ui-gmap-layer>
-    </ui-gmap-google-map>
 </div>
