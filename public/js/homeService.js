@@ -152,13 +152,14 @@
             }
         }
 
-        function getIntersection(givenUsername1, givenUsername2){
+        function getIntersection(givenUsername1, givenUsername2, givenTime){
             return $http({
                 method: 'POST',
                 url: '/api/getIntersection',
                 data: {
                     username1: givenUsername1,
-                    username2: givenUsername2
+                    username2: givenUsername2,
+                    time: givenTime
                 }
             })
                 .then(success)
