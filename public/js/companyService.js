@@ -37,6 +37,27 @@
             }
         }
 
+        //Delete a company given a companyId
+        function deleteCompany(givenCompanyID){
+            return $http({
+                method: 'post',
+                url: '/api/deleteCompany',
+                data:{
+                    companyID: givenCompanyID,
+                }
+            })
+                .then(success)
+                .catch(fail);
+
+            function success(response){
+                return response.data;
+            }
+            function fail(error){
+                console.log("Error in deleteCompany()");
+                console.log(error);
+            }
+        }
+
         //Add a member to the company via username
         function addMemberToCompany(givenCompanyId, givenUsername){
             return $http({
