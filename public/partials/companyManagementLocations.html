@@ -5,3 +5,35 @@
 </div>
 
 <hr>
+
+<div class="col-md-8">
+    <div class="btn-group" id="floating-panel">
+        <button class="btn btn-default btn-map" ng-click="vm.toggleHeatmap()">Toggle Heatmap</button>
+        <button class="btn btn-default btn-map" ng-click="vm.changeGradient()">Change gradient</button>
+        <button class="btn btn-default btn-map" ng-click="vm.changeRadius()">Change radius</button>
+        <button class="btn btn-default btn-map" ng-click="vm.changeOpacity()">Change opacity</button>
+    </div>
+
+    <ui-gmap-google-map center="vm.mapProperties.center" zoom="vm.mapProperties.zoom">
+        <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="vm.mapProperties.show" onCreated="vm.mapProperties.heatLayerCallback"></ui-gmap-layer>
+    </ui-gmap-google-map>
+</div>
+
+<div class="col-md-4">
+    <h4>Date Filter</h4>
+    <form class="col-md-12">
+        <div class="row">
+            <input class="form-control" type="text" placeholder="MM" minlength="2" maxlength="2" ng-model="vm.date.month" required/>
+        </div>
+        <div class="row">
+            <input class="form-control"  type="text" placeholder="DD" minlength="2" maxlength="2" ng-model="vm.date.day" required/>
+        </div>
+        <div class="row">
+            <input  class="form-control" type="text" placeholder="yyyy" minlength="4" maxlength="4" ng-model="vm.date.year" required/>
+        </div>
+        <div class="row">
+            <button class="btn btn-primary" type="submit" ng-click="vm.filterByDate()">Go</button>
+            <button class="btn btn-warning" ng-click="vm.resetDates()" ng-if="vm.dateFilter">Reset</button>
+        </div>
+    </form>
+</div>
