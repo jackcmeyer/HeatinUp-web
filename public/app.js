@@ -37,7 +37,8 @@
                 controllerAs: 'vm'
             })
             .state('companyManagementLocations', {
-                url: '/company_management/locations/id/{companyId}'
+                url: '/company_management/locations/id/:companyId'
+                //TODO Finish this
             })
             .state('login', {
                 url: '/login',
