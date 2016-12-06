@@ -12,6 +12,34 @@
 
 	<div ui-view></div>
 
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Navigation</h4>
+				</div>
+				<div class="modal-body" style="padding: 0">
+					<ul class="navigation-list" data-dismiss="modal">
+						<li ui-sref="home">
+							Date & User Filter
+						</li>
+						<li ui-sref="userIntersection" data-dismiss="modal">
+							User Intersections
+						</li>
+						<li ui-sref="companyManagement" data-dismiss="modal">
+							Company Management
+						</li>
+					</ul>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<script src="./assets/jquery/jquery-3.1.0.min.js"></script>
     <script src="./assets/twitterBootstrap/js/bootstrap.min.js"></script>
 	<script src="./assets/angular/angular.min.js"></script>
@@ -24,8 +52,11 @@
     <script src="./js/loginService.js"></script>
     <script src="./js/registerService.js"></script>
     <script src="./js/homeService.js"></script>
+	<script src="./js/companyService.js"></script>
 	<script src="./js/loginController.js"></script>
 	<script src="./js/registerController.js"></script>
     <script src="./js/homeController.js"></script>
+	<script src="./js/userIntersectionController.js"></script>
+	<script src="./js/companyManagementController.js"></script>
 </body>
 </html>

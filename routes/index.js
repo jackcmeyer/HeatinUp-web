@@ -272,7 +272,7 @@ router.post('/api/getCompaniesForOwner', function(req, res, next) {
 /**
  * Get all company location data for company
  *
- * @param companyID {Stringg} The company id
+ * @param companyID {String} The company id
  */
 router.post('/api/getAllLocationDataForCompany', function(req, res, next) {
    if(!req.body.companyID) {
@@ -374,7 +374,7 @@ router.post('/api/addMemberToCompany', function(req, res, next) {
 
           // if the username does not exist.
           if(!user) {
-            return res.status(400).json({message: "Username does nto exist"});
+            return res.status(400).json({message: "Username does not exist"});
           }
 
           // if the username does exist.
