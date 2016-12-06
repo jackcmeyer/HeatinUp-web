@@ -9,6 +9,7 @@
     function companyService($http, loginService) {
         return {
             createNewCompany: createNewCompany,
+            deleteCompany: deleteCompany,
             addMemberToCompany: addMemberToCompany,
             getCompaniesForOwner: getCompaniesForOwner,
             getAllLocationDataForCompany: getAllLocationDataForCompany,
