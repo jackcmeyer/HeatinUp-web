@@ -248,6 +248,23 @@ router.post('/api/createCompany', function(req, res, next) {
   });
 });
 
+router.post('/api/deleteCompany', function(req, res, next) {
+    if(!req.body.companyID) {
+        return res.status(400).json({message: "Please fill out all fields"});
+    }
+
+    Company.remove({"_id": req.body.companyID}, function(error) {
+        if(error) {
+            return next(error);
+        }
+
+        else {
+            res.status(200).json({message: "Successfully deleted company"});
+        }
+
+    })
+});
+
 /**
  * Gets all companies for an owner
  *
