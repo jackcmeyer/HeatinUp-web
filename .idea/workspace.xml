@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b96ad0a3-dbea-4a2a-86f7-8b122d349e8d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/companyManagementLocationsController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/partials/companyManagementLocations.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app.js" afterPath="$PROJECT_DIR$/public/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/userIntersectionController.js" afterPath="$PROJECT_DIR$/public/js/userIntersectionController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/loginService.js" afterPath="$PROJECT_DIR$/public/js/loginService.js" />
     </list>
     <ignored path="HeatinUp-web.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,17 +27,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="loginService.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="loginService.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/loginService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
+            <state relative-caret-position="198">
+              <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="userIntersectionController.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="userIntersectionController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/userIntersectionController.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="415">
@@ -143,7 +139,6 @@
         <option value="$PROJECT_DIR$/public/partials/companyManagement.html" />
         <option value="$PROJECT_DIR$/public/js/homeService.js" />
         <option value="$PROJECT_DIR$/public/js/companyService.js" />
-        <option value="$PROJECT_DIR$/public/js/loginService.js" />
         <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/public/partials/userIntersection.html" />
         <option value="$PROJECT_DIR$/public/app.js" />
@@ -152,6 +147,7 @@
         <option value="$PROJECT_DIR$/public/js/companyManagementLocationsController.js" />
         <option value="$PROJECT_DIR$/public/partials/companyManagementLocations.html" />
         <option value="$PROJECT_DIR$/public/js/userIntersectionController.js" />
+        <option value="$PROJECT_DIR$/public/js/loginService.js" />
       </list>
     </option>
   </component>
@@ -873,7 +869,7 @@
       <workItem from="1480918191254" duration="737000" />
       <workItem from="1480961198216" duration="24904000" />
       <workItem from="1480988003471" duration="2446000" />
-      <workItem from="1480990684328" duration="5515000" />
+      <workItem from="1480990684328" duration="5548000" />
     </task>
     <task id="LOCAL-00001" summary="Did some more updates. The home page should be good to go except for the fact that we still need real datapoints.">
       <created>1478020250509</created>
@@ -938,11 +934,18 @@
       <option name="project" value="LOCAL" />
       <updated>1481002332413</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Word update and getting ready for memeber display">
+      <created>1481003007592</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1481003007592</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58339000" />
+    <option name="totallyTimeSpent" value="58372000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1034,7 +1037,8 @@
     <MESSAGE value="positioning" />
     <MESSAGE value="Added in some error checking" />
     <MESSAGE value="Finished up a few todo's" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished up a few todo's" />
+    <MESSAGE value="Word update and getting ready for memeber display" />
+    <option name="LAST_COMMIT_MESSAGE" value="Word update and getting ready for memeber display" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2073,14 +2077,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/loginService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/userIntersectionController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="415">
@@ -2098,6 +2094,14 @@
             <element signature="e#2460#2560#0" expanded="false" />
             <element signature="e#3779#4030#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/loginService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
