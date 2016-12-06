@@ -47,6 +47,9 @@
                 <h4 class="modal-title">User Management</h4>
             </div>
             <div class="modal-body">
+                <div ng-if="vm.error">
+                    <div class="alert alert-warning" role="alert">{{vm.error}}</div>
+                </div>
                 <div class="input-group">
                     <input class="form-control" placeholder="Username" type="text" ng-model="vm.newUserName"/>
                     <span class="input-group-btn"><button class="btn btn-success" ng-click="vm.addMember()"><span class="glyphicon glyphicon-plus-sign"></span></button></span>

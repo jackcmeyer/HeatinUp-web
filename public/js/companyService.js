@@ -54,8 +54,7 @@
                 return response.data;
             }
             function fail(error){
-                console.log("Error in addMemberToCompany()");
-                console.log(error);
+                return error;
             }
         }
 

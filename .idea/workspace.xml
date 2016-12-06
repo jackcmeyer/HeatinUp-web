@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b96ad0a3-dbea-4a2a-86f7-8b122d349e8d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/companyManagementController.js" afterPath="$PROJECT_DIR$/public/js/companyManagementController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/companyService.js" afterPath="$PROJECT_DIR$/public/js/companyService.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/partials/companyManagement.html" afterPath="$PROJECT_DIR$/public/partials/companyManagement.html" />
     </list>
     <ignored path="HeatinUp-web.iws" />
@@ -47,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="companyManagement.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="companyManagement.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/partials/companyManagement.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="16" column="177" selection-start-line="16" selection-start-column="177" selection-end-line="16" selection-end-column="177" />
+            <state relative-caret-position="540">
+              <caret line="51" column="22" selection-start-line="51" selection-start-column="22" selection-end-line="51" selection-end-column="22" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#button#0;n#div#0;n#!!top" expanded="true" />
@@ -69,40 +71,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="companyService.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/js/companyService.js">
+      <file leaf-file-name="companyManagementController.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/js/companyManagementController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
-              <folding>
-                <element signature="e#649#1214#0" expanded="false" />
-                <element signature="e#676#905#0" expanded="false" />
-                <element signature="e#774#891#0" expanded="false" />
-                <element signature="e#1007#1060#0" expanded="false" />
-                <element signature="e#1093#1204#0" expanded="false" />
-                <element signature="e#1333#1898#0" expanded="false" />
-                <element signature="e#1360#1587#0" expanded="false" />
-                <element signature="e#1463#1573#0" expanded="false" />
-                <element signature="e#1689#1742#0" expanded="false" />
-                <element signature="e#1775#1888#0" expanded="false" />
-                <element signature="e#1985#2524#0" expanded="false" />
-                <element signature="e#2012#2208#0" expanded="false" />
-                <element signature="e#2118#2194#0" expanded="false" />
-                <element signature="e#2311#2364#0" expanded="false" />
-                <element signature="e#2399#2514#0" expanded="false" />
-                <element signature="e#2648#3464#0" expanded="false" />
-                <element signature="e#2675#2868#0" expanded="false" />
-                <element signature="e#2789#2854#0" expanded="false" />
-                <element signature="e#3012#3296#0" expanded="false" />
-                <element signature="e#3114#3247#0" expanded="false" />
-                <element signature="e#3331#3454#0" expanded="false" />
-                <element signature="e#3642#4503#0" expanded="false" />
-                <element signature="e#3669#3901#0" expanded="false" />
-                <element signature="e#3789#3887#0" expanded="false" />
-                <element signature="e#4045#4329#0" expanded="false" />
-                <element signature="e#4147#4280#0" expanded="false" />
-                <element signature="e#4364#4493#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="394">
+              <caret line="95" column="30" selection-start-line="95" selection-start-column="30" selection-end-line="95" selection-end-column="30" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -224,11 +198,11 @@
         <option value="$PROJECT_DIR$/public/js/userIntersectionController.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/public/stylesheets/style.css" />
-        <option value="$PROJECT_DIR$/public/js/companyService.js" />
-        <option value="$PROJECT_DIR$/public/js/companyManagementController.js" />
         <option value="$PROJECT_DIR$/public/app.js" />
         <option value="$PROJECT_DIR$/public/js/loginService.js" />
+        <option value="$PROJECT_DIR$/public/js/companyService.js" />
         <option value="$PROJECT_DIR$/public/partials/companyManagement.html" />
+        <option value="$PROJECT_DIR$/public/js/companyManagementController.js" />
       </list>
     </option>
   </component>
@@ -839,7 +813,7 @@
       <workItem from="1480918191254" duration="737000" />
       <workItem from="1480961198216" duration="24904000" />
       <workItem from="1480988003471" duration="2446000" />
-      <workItem from="1480990684328" duration="223000" />
+      <workItem from="1480990684328" duration="827000" />
     </task>
     <task id="LOCAL-00001" summary="Did some more updates. The home page should be good to go except for the fact that we still need real datapoints.">
       <created>1478020250509</created>
@@ -883,11 +857,18 @@
       <option name="project" value="LOCAL" />
       <updated>1480990820665</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="positioning">
+      <created>1480990914362</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1480990914362</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53047000" />
+    <option name="totallyTimeSpent" value="53651000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -976,11 +957,12 @@
     <MESSAGE value="Got most of the search user options done." />
     <MESSAGE value="Merge branches 'master' and 'moreServices' of https://github.com/jackcmeyer/HeatinUp-web into moreServices&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10; Got the ui to interface with ian's code." />
     <MESSAGE value="Fixed a few things" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed a few things" />
+    <MESSAGE value="positioning" />
+    <option name="LAST_COMMIT_MESSAGE" value="positioning" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1618,50 +1600,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/companyManagementController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="68" column="33" selection-start-line="68" selection-start-column="33" selection-end-line="68" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/companyService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
-          <folding>
-            <element signature="e#649#1214#0" expanded="false" />
-            <element signature="e#676#905#0" expanded="false" />
-            <element signature="e#774#891#0" expanded="false" />
-            <element signature="e#1007#1060#0" expanded="false" />
-            <element signature="e#1093#1204#0" expanded="false" />
-            <element signature="e#1333#1898#0" expanded="false" />
-            <element signature="e#1360#1587#0" expanded="false" />
-            <element signature="e#1463#1573#0" expanded="false" />
-            <element signature="e#1689#1742#0" expanded="false" />
-            <element signature="e#1775#1888#0" expanded="false" />
-            <element signature="e#1985#2524#0" expanded="false" />
-            <element signature="e#2012#2208#0" expanded="false" />
-            <element signature="e#2118#2194#0" expanded="false" />
-            <element signature="e#2311#2364#0" expanded="false" />
-            <element signature="e#2399#2514#0" expanded="false" />
-            <element signature="e#2648#3464#0" expanded="false" />
-            <element signature="e#2675#2868#0" expanded="false" />
-            <element signature="e#2789#2854#0" expanded="false" />
-            <element signature="e#3012#3296#0" expanded="false" />
-            <element signature="e#3114#3247#0" expanded="false" />
-            <element signature="e#3331#3454#0" expanded="false" />
-            <element signature="e#3642#4503#0" expanded="false" />
-            <element signature="e#3669#3901#0" expanded="false" />
-            <element signature="e#3789#3887#0" expanded="false" />
-            <element signature="e#4045#4329#0" expanded="false" />
-            <element signature="e#4147#4280#0" expanded="false" />
-            <element signature="e#4364#4493#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="496">
@@ -1688,8 +1626,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/partials/companyManagement.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="177" selection-start-line="16" selection-start-column="177" selection-end-line="16" selection-end-column="177" />
+        <state relative-caret-position="540">
+          <caret line="51" column="22" selection-start-line="51" selection-start-column="22" selection-end-line="51" selection-end-column="22" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#div#0;n#!!top" expanded="true" />
@@ -1703,6 +1641,48 @@
             <element signature="e#1590#1597#0" expanded="true" />
             <element signature="e#2477#2484#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/companyService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="40" column="66" selection-start-line="40" selection-start-column="66" selection-end-line="40" selection-end-column="66" />
+          <folding>
+            <element signature="e#649#1214#0" expanded="false" />
+            <element signature="e#676#905#0" expanded="false" />
+            <element signature="e#774#891#0" expanded="false" />
+            <element signature="e#1007#1060#0" expanded="false" />
+            <element signature="e#1093#1204#0" expanded="false" />
+            <element signature="e#1333#1830#0" expanded="false" />
+            <element signature="e#1360#1587#0" expanded="false" />
+            <element signature="e#1463#1573#0" expanded="false" />
+            <element signature="e#1917#2456#0" expanded="false" />
+            <element signature="e#1944#2140#0" expanded="false" />
+            <element signature="e#2050#2126#0" expanded="false" />
+            <element signature="e#2243#2296#0" expanded="false" />
+            <element signature="e#2331#2446#0" expanded="false" />
+            <element signature="e#2580#3396#0" expanded="false" />
+            <element signature="e#2607#2800#0" expanded="false" />
+            <element signature="e#2721#2786#0" expanded="false" />
+            <element signature="e#2944#3228#0" expanded="false" />
+            <element signature="e#3046#3179#0" expanded="false" />
+            <element signature="e#3263#3386#0" expanded="false" />
+            <element signature="e#3574#4435#0" expanded="false" />
+            <element signature="e#3601#3833#0" expanded="false" />
+            <element signature="e#3721#3819#0" expanded="false" />
+            <element signature="e#3977#4261#0" expanded="false" />
+            <element signature="e#4079#4212#0" expanded="false" />
+            <element signature="e#4296#4425#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/companyManagementController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="95" column="30" selection-start-line="95" selection-start-column="30" selection-end-line="95" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>

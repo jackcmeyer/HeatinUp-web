@@ -12,6 +12,7 @@
         vm.companies = [];
         vm.editingCompany = {};
         vm.companyMembers = [];
+        vm.error;
         vm.activate = activate;
         vm.logout = logout;
         vm.createCompany = createCompany;
@@ -32,7 +33,6 @@
                 .catch(fail);
 
             function success(response) {
-                console.log(response);
                 vm.companies = response;
             }
 
@@ -90,17 +90,20 @@
             if(vm.newUserName == "")
                 return;
 
+            vm.error = "";
+
             companyService.addMemberToCompany(vm.editingCompany._id, vm.newUserName)
-                .then(success)
-                .catch(fail);
+                .then(success);
 
             function success(response) {
+                if(response.data.message == "Username does not exist")
+                {
+                    vm.error = response.data.message;
+                    return;
+                }
+
                 vm.companyMembers.push(vm.newUserName);
                 vm.newUserName = "";
-            }
-
-            function fail(error) {
-                console.log(error);
             }
         }
         
