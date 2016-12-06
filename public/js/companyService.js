@@ -7,6 +7,13 @@
     companyService.$inject = ['$http', 'loginService'];
 
     function companyService($http, loginService) {
+        return {
+            createNewCompany: createNewCompany,
+            addMemberToCompany: addMemberToCompany,
+            getCompaniesForOwner: getCompaniesForOwner,
+            getAllLocationDataForCompany: getAllLocationDataForCompany,
+            getAllLocationDataForCompanyByDate: getAllLocationDataForCompanyByDate
+        };
 
         //Create a new company
         function createNewCompany(givenCompanyName){
@@ -22,7 +29,7 @@
                 .catch(fail);
 
             function success(response){
-                return response.data.message;
+                return response.data;
             }
             function fail(error){
                 console.log("Error in createNewCompany()");
@@ -44,7 +51,7 @@
                 .catch(fail);
 
             function success(response){
-                return response.data.message;
+                return response.data;
             }
             function fail(error){
                 console.log("Error in addMemberToCompany()");
@@ -133,4 +140,5 @@
             }
         }
     }
-});
+
+})();

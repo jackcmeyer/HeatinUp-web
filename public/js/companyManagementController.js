@@ -4,17 +4,18 @@
     angular.module('heatin_up')
         .controller("companyManagementController", companyManagementController);
 
-    companyManagementController.$inject = ['loginService', '$location'];
+    companyManagementController.$inject = ['companyService', 'loginService', '$location'];
 
-    function companyManagementController(loginService, $location) {
+    function companyManagementController(companyService, loginService, $location) {
         var vm = this;
         vm.newCompanyName = "";
-        vm.companies = ["test", "test2", "test3"];
+        vm.companies = [];
         vm.editingCompany = {};
-        vm.companyMembers = ["Anthony", "Jack", "Nischay", "Ian"];
+        vm.companyMembers = [];
         vm.activate = activate;
         vm.logout = logout;
         vm.createCompany = createCompany;
+        vm.removeCompany = removeCompany;
         vm.viewLocationData = viewLocationData;
         vm.setEditingCompany = setEditingCompany;
         vm.addMember = addMember;
@@ -26,10 +27,13 @@
             if (!loginService.isLoggedIn())
                 $location.path('/login');
 
-            //TODO get companies
+            companyService.getCompaniesForOwner()
+                .then(success)
+                .catch(fail);
 
             function success(response) {
-                //TODO Set Companies
+                console.log(response);
+                vm.companies = response;
             }
 
             function fail(error) {
@@ -46,9 +50,25 @@
             if(vm.newCompanyName == "")
                 return;
 
-            //TODO call create company
+            companyService.createNewCompany(vm.newCompanyName)
+                .then(success)
+                .catch(fail);
 
-            function success(response) {
+            function success() {
+                vm.newCompanyName = "";
+                vm.activate();
+            }
+
+            function fail(error) {
+                console.log(error);
+            }
+        }
+
+        function removeCompany(company) {
+
+            //TODO remove company
+
+            function success() {
                 vm.activate();
             }
 
@@ -58,22 +78,29 @@
         }
 
         function viewLocationData(company) {
-            //TODO GetCompanyId and switch views
+            $location.path('/company_management/locations/id/' + company._id);
         }
 
         function setEditingCompany(company) {
             vm.editingCompany = company;
-
-            //TODO Get company members
+            vm.companyMembers = company.members;
         }
 
         function addMember() {
             if(vm.newUserName == "")
                 return;
 
-            //TODO Add Member
+            companyService.addMemberToCompany(vm.editingCompany._id, vm.newUserName)
+                .then(success)
+                .catch(fail);
+
             function success(response) {
+                vm.companyMembers.push(vm.newUserName);
                 vm.newUserName = "";
+            }
+
+            function fail(error) {
+                console.log(error);
             }
         }
         

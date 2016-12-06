@@ -36,6 +36,9 @@
                 controller: 'companyManagementController',
                 controllerAs: 'vm'
             })
+            .state('companyManagementLocations', {
+                url: '/company_management/locations/id/{companyId}'
+            })
             .state('login', {
                 url: '/login',
                 templateUrl: 'partials/login.html',
