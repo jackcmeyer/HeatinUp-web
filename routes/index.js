@@ -415,6 +415,51 @@ router.post('/api/addMemberToCompany', function(req, res, next) {
 
 });
 
+/**
+ * Removes a member from a company
+ *
+ * @param companyID {String} the companyID
+ * @param username {String} the username to remove
+ */
+router.post('/api/removeMemberFromCompany', function(req, res, next) {
+   if(!req.body.companyID || !req.body.username) {
+       return res.status(400).json({message: 'Please fill out all fields.'});
+   }
+
+   Company.findOne({"_id": req.body.companyID}, function(error, result) {
+      if(error) {
+          return next(error);
+      }
+
+      if(!result) {
+          return res.status(400).json({message: 'Not a valid company.'});
+      }
+
+      var index = result.members.indexOf(req.body.username);
+
+      if(index > -1) {
+          result.members.splice(index, 1);
+
+          result.save(function(error) {
+              if(error) {
+                  return next(error);
+              }
+
+              else {
+                  return res.status(200).json({message: "success"});
+              }
+          })
+      }
+
+      else {
+          return res.status(400).json({message: 'Username not a member in this company'});
+      }
+
+   });
+
+
+});
+
 
 var getLocationDataForUser = function(username, callback) {
      Location.find({username: username}, function(error, results) {
