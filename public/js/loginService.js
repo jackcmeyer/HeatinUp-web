@@ -8,8 +8,8 @@
 
     function loginService($http) {
 
-        var loggedIn = false;
-        var username = "";
+        var loggedIn = true;
+        var username = "test";
 
         return {
             getUsername: getUsername,

@@ -12,8 +12,9 @@
 
 <div ng-repeat="item in vm.companies track by $index">
     <div class="row">
-        <h4 style="display: inline-block;">{{item}}</h4>
+        <h4 style="display: inline-block;">{{item.name}}</h4>
         <button style="float: right;" class="btn btn-primary" ng-click="vm.viewLocationData(item)"><span class="glyphicon glyphicon-eye-open"></span></button>
+        <button style="float: right;" class="btn btn-danger" ng-click="vm.removeCompany(item)"><span class="glyphicon glyphicon-trash"></span></button>
         <button style="float: right; margin-right: 5px;" class="btn btn-warning" data-toggle="modal" data-target="#modal-modify" ng-click="vm.setEditingCompany(item)"><span class="glyphicon glyphicon-edit"></span></button>
     </div>
 </div>

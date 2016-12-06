@@ -151,6 +151,35 @@
                 console.log(error);
             }
         }
+
+        function getIntersection(givenUsername1, givenUsername2, givenTime){
+            return $http({
+                method: 'POST',
+                url: '/api/getIntersection',
+                data: {
+                    username1: givenUsername1,
+                    username2: givenUsername2,
+                    time: givenTime
+                }
+            })
+                .then(success)
+                .catch(fail);
+
+            function success(response) {
+                var returnVal = [];
+
+                for(var i = 0; i < response.data.length; i++) {
+                    returnVal.push({latitude: response.data[i].latitude, longitude: response.data[i].longitude});
+                }
+
+                return returnVal;
+            }
+
+            function fail(error) {
+                console.log("Error in getIntersection()");
+                console.log(error);
+            }
+        }
     }
 
 })();
