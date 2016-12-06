@@ -4,10 +4,11 @@
     angular.module('heatin_up')
         .controller("userIntersectionController", userIntersectionController);
 
-    userIntersectionController.$inject = ['loginService', '$location'];
+    userIntersectionController.$inject = ['homeService', 'loginService', '$location'];
 
-    function userIntersectionController(loginService, $location) {
+    function userIntersectionController(homeService, loginService, $location) {
         var vm = this;
+        vm.error = "";
         vm.mapProperties = {};
         vm.heatmapLayer = {};
         vm.showingResults = false;
@@ -83,13 +84,28 @@
             if(vm.users.first == "" || vm.users.second == "" || vm.date.month.length < 2 || vm.date.day.length < 2 || vm.date.year.length < 4)
                 return;
 
+            vm.error = "";
             var date = vm.date.month + "-" + vm.date.day + "-" + vm.date.year;
 
-            //TODO Add in call to backend
-            //.then(success).catch(fail);
+            homeService.getIntersection(vm.users.first, vm.users.second, date)
+                .then(success)
+                .catch(fail);
 
             function success(response) {
-                vm.showingResults = true;
+                if(response.length > 0) {
+                    vm.showingResults = true;
+                    vm.mapProperties.data = response;
+
+                    var dataArray = [];
+                    for (var i = 0; i < vm.mapProperties.data.length; i++) {
+                        dataArray.push(new google.maps.LatLng(vm.mapProperties.data[i].latitude, vm.mapProperties.data[i].longitude));
+                    }
+
+                    vm.heatmapLayer.setData(dataArray);
+                }
+                else {
+                    vm.error = "The users have never encountered each other.";
+                }
             }
 
             function fail(error) {

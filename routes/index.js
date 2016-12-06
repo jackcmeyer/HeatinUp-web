@@ -488,7 +488,7 @@ var getLocationDataForUser = function(username, callback) {
             return callback(results);
         }
     })
-}
+};
 
 module.exports = router;
 

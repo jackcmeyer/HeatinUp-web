@@ -45,7 +45,7 @@
                 method: 'post',
                 url: '/api/deleteCompany',
                 data:{
-                    companyID: givenCompanyID,
+                    companyID: givenCompanyID
                 }
             })
                 .then(success)

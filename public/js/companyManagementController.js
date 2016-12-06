@@ -66,7 +66,9 @@
 
         function removeCompany(company) {
 
-            //TODO remove company
+            companyService.deleteCompany(company._id)
+                .then(success)
+                .catch(fail);
 
             function success() {
                 vm.activate();
@@ -96,7 +98,7 @@
                 .then(success);
 
             function success(response) {
-                if(response.data.message == "Username does not exist")
+                if(response.data && response.data.message && response.data.message == "Username does not exist")
                 {
                     vm.error = response.data.message;
                     return;
@@ -108,7 +110,23 @@
         }
         
         function removeMember(member) {
-            //TODO Remove Member
+            companyService.removeMemberFromCompany(vm.editingCompany._id, member)
+                .then(success)
+                .catch(fail);
+
+            function success(response) {
+                if(response.message == "success")
+                {
+                    var index = vm.companyMembers.indexOf(member);
+
+                    if(index > -1)
+                        vm.companyMembers.splice(index, 1);
+                }
+            }
+
+            function fail(error) {
+                console.log(error);
+            }
         }
     }
 

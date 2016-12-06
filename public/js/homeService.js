@@ -12,7 +12,8 @@
             getLocationDataForUser: getLocationDataForUser,
             getLocationDataForAll: getLocationDataForAll,
             getLocationDataForUserByDate: getLocationDataForUserByDate,
-            getLocationDataForAllByDate: getLocationDataForAllByDate
+            getLocationDataForAllByDate: getLocationDataForAllByDate,
+            getIntersection: getIntersection
         };
 
         function getMapCenter() {

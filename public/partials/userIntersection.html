@@ -20,6 +20,9 @@
 </div>
 <div class="col-md-4">
     <div class="row">
+        <div ng-if="vm.error">
+            <div class="alert alert-warning" role="alert">{{vm.error}}</div>
+        </div>
         <h4>Search intersections</h4>
         <form class="col-md-12">
             <div class="row">
