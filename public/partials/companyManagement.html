@@ -50,11 +50,13 @@
                 <div ng-if="vm.error">
                     <div class="alert alert-warning" role="alert">{{vm.error}}</div>
                 </div>
+                <h4>Add User</h4>
                 <div class="input-group">
                     <input class="form-control" placeholder="Username" type="text" ng-model="vm.newUserName"/>
                     <span class="input-group-btn"><button class="btn btn-success" ng-click="vm.addMember()"><span class="glyphicon glyphicon-plus-sign"></span></button></span>
                 </div>
                 <hr>
+                <h4>Remove Users</h4>
                 <div ng-repeat="item in vm.companyMembers track by $index">
                     <div class="input-group">
                         <input class="form-control" placeholder="{{item}}" type="text" disabled/>
