@@ -1,0 +1,66 @@
+<div style="text-align: center">
+    <button class="btn btn-default" style="float: left;" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-menu-hamburger"></span></button>
+    <h1 style="display: inline-block;">Company Management</h1>
+    <button class="btn btn-default" style="float: right" ng-click="vm.logout()">Logout <span class="glyphicon glyphicon-log-out"></span></button>
+</div>
+
+<hr>
+
+<button class="btn btn-primary" data-toggle="modal" data-target="#modal-create">Create</button>
+
+<h3 style="border-bottom: 1px solid #000">Current Companies</h3>
+
+<div ng-repeat="item in vm.companies track by $index">
+    <div class="row">
+        <h4 style="display: inline-block;">{{item}}</h4>
+        <button style="float: right;" class="btn btn-primary" ng-click="vm.viewLocationData(item)"><span class="glyphicon glyphicon-eye-open"></span></button>
+        <button style="float: right; margin-right: 5px;" class="btn btn-warning" data-toggle="modal" data-target="#modal-modify" ng-click="vm.setEditingCompany(item)"><span class="glyphicon glyphicon-edit"></span></button>
+    </div>
+</div>
+
+<!-- Modal Create -->
+<div class="modal fade" id="modal-create" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                <h4 class="modal-title">Create Company</h4>
+            </div>
+            <div class="modal-body">
+                <input class="form-control" placeholder="Company Name" type="text" ng-model="vm.newCompanyName"/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="vm.createCompany()">Create</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Modify -->
+<div class="modal fade" id="modal-modify" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                <h4 class="modal-title">User Management</h4>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <input class="form-control" placeholder="Username" type="text" ng-model="vm.newUserName"/>
+                    <span class="input-group-btn"><button class="btn btn-success" ng-click="vm.addMember()"><span class="glyphicon glyphicon-plus-sign"></span></button></span>
+                </div>
+                <hr>
+                <div ng-repeat="item in vm.companyMembers track by $index">
+                    <div class="input-group">
+                        <input class="form-control" placeholder="{{item}}" type="text" disabled/>
+                        <span class="input-group-btn"><button class="btn btn-danger" ng-click="vm.removeMember(item)"><span class="glyphicon glyphicon-minus-sign"></span></button></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

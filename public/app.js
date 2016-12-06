@@ -24,6 +24,18 @@
                 controller: 'homeController',
                 controllerAs: 'vm'
             })
+            .state('userIntersection', {
+                url: '/user_intersection',
+                templateUrl: 'partials/userIntersection.html',
+                controller: 'userIntersectionController',
+                controllerAs: 'vm'
+            })
+            .state('companyManagement', {
+                url: '/company_management',
+                templateUrl: 'partials/companyManagement.html',
+                controller: 'companyManagementController',
+                controllerAs: 'vm'
+            })
             .state('login', {
                 url: '/login',
                 templateUrl: 'partials/login.html',

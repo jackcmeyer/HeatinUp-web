@@ -25,5 +25,40 @@ body {
 }
 
 .alert {
-  margin-bottom: 0px;
+  margin-bottom: 0;
+}
+
+.navigation-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.navigation-list li {
+    margin: 0;
+    padding: 20px;
+    cursor: auto;
+}
+
+.navigation-list li:hover {
+    background-color: #e6e6e6;
+    cursor: pointer;
+}
+
+.modal {
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    .modal:before {
+        display: inline-block;
+        vertical-align: middle;
+        content: " ";
+        height: 100%;
+    }
+}
+
+.modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
 }

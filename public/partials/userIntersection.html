@@ -1,0 +1,54 @@
+<div style="text-align: center">
+    <button class="btn btn-default" style="float: left;" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-menu-hamburger"></span></button>
+    <h1 style="display: inline-block;">User Intersection</h1>
+    <button class="btn btn-default" style="float: right" ng-click="vm.logout()">Logout <span class="glyphicon glyphicon-log-out"></span></button>
+</div>
+
+<hr>
+
+<div class="col-md-8">
+    <div class="btn-group" id="floating-panel">
+        <button class="btn btn-default btn-map" ng-click="vm.toggleHeatmap()">Toggle Heatmap</button>
+        <button class="btn btn-default btn-map" ng-click="vm.changeGradient()">Change gradient</button>
+        <button class="btn btn-default btn-map" ng-click="vm.changeRadius()">Change radius</button>
+        <button class="btn btn-default btn-map" ng-click="vm.changeOpacity()">Change opacity</button>
+    </div>
+
+    <ui-gmap-google-map center="vm.mapProperties.center" zoom="vm.mapProperties.zoom">
+        <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="vm.mapProperties.show" onCreated="vm.mapProperties.heatLayerCallback"></ui-gmap-layer>
+    </ui-gmap-google-map>
+</div>
+<div class="col-md-4">
+    <div class="row">
+        <h4>Search intersections</h4>
+        <form class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <input class="form-control" type="text" placeholder="User 1" ng-model="vm.users.first" required/>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control"  type="text" placeholder="User 2" ng-model="vm.users.second" required/>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-4">
+                    <input class="form-control" type="text" placeholder="MM" minlength="2" maxlength="2" ng-model="vm.date.month" required/>
+                </div>
+                <div class="col-md-4">
+                    <input class="form-control"  type="text" placeholder="DD" minlength="2" maxlength="2" ng-model="vm.date.day" required/>
+                </div>
+                <div class="col-md-4">
+                    <input  class="form-control" type="text" placeholder="yyyy" minlength="4" maxlength="4" ng-model="vm.date.year" required/>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn btn-primary" type="submit" ng-click="vm.search()">Go</button>
+                    <button class="btn btn-warning" ng-click="vm.reset()" ng-if="vm.showingResults">Clear</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
