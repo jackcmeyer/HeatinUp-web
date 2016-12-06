@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b96ad0a3-dbea-4a2a-86f7-8b122d349e8d" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/companyManagementLocationsController.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/partials/companyManagementLocations.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/companyManagementController.js" afterPath="$PROJECT_DIR$/public/js/companyManagementController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/companyService.js" afterPath="$PROJECT_DIR$/public/js/companyService.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/homeService.js" afterPath="$PROJECT_DIR$/public/js/homeService.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/loginService.js" afterPath="$PROJECT_DIR$/public/js/loginService.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app.js" afterPath="$PROJECT_DIR$/public/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/userIntersectionController.js" afterPath="$PROJECT_DIR$/public/js/userIntersectionController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/partials/userIntersection.html" afterPath="$PROJECT_DIR$/public/partials/userIntersection.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/index.js" afterPath="$PROJECT_DIR$/routes/index.js" />
     </list>
     <ignored path="HeatinUp-web.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -43,21 +41,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="40" column="18" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="userIntersectionController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/userIntersectionController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="397">
-              <caret line="108" column="13" selection-start-line="108" selection-start-column="13" selection-end-line="108" selection-end-column="13" />
+            <state relative-caret-position="415">
+              <caret line="106" column="62" selection-start-line="106" selection-start-column="62" selection-end-line="106" selection-end-column="62" />
               <folding>
                 <element signature="e#882#1347#0" expanded="false" />
                 <element signature="e#1002#1336#0" expanded="false" />
@@ -69,54 +57,43 @@
                 <element signature="e#1630#2187#0" expanded="false" />
                 <element signature="e#2328#2425#0" expanded="false" />
                 <element signature="e#2460#2560#0" expanded="false" />
-                <element signature="e#3795#4046#0" expanded="false" />
+                <element signature="e#3779#4030#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="homeService.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/js/homeService.js">
+      <file leaf-file-name="companyManagementLocations.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/partials/companyManagementLocations.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="155" column="32" selection-start-line="155" selection-start-column="17" selection-end-line="155" selection-end-column="32" />
+            <state relative-caret-position="108">
+              <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
               <folding>
-                <element signature="e#621#1621#0" expanded="false" />
-                <element signature="e#648#846#0" expanded="false" />
-                <element signature="e#756#832#0" expanded="false" />
-                <element signature="e#949#1525#0" expanded="false" />
-                <element signature="e#1099#1250#0" expanded="false" />
-                <element signature="e#1560#1611#0" expanded="false" />
-                <element signature="e#1673#2428#0" expanded="false" />
-                <element signature="e#1700#1880#0" expanded="false" />
-                <element signature="e#1808#1866#0" expanded="false" />
-                <element signature="e#1983#2266#0" expanded="false" />
-                <element signature="e#2084#2217#0" expanded="false" />
-                <element signature="e#2301#2418#0" expanded="false" />
-                <element signature="e#2479#3150#0" expanded="false" />
-                <element signature="e#2506#2603#0" expanded="false" />
-                <element signature="e#2706#2989#0" expanded="false" />
-                <element signature="e#2807#2940#0" expanded="false" />
-                <element signature="e#3024#3140#0" expanded="false" />
-                <element signature="e#3214#4005#0" expanded="false" />
-                <element signature="e#3241#3459#0" expanded="false" />
-                <element signature="e#3355#3445#0" expanded="false" />
-                <element signature="e#3562#3845#0" expanded="false" />
-                <element signature="e#3663#3796#0" expanded="false" />
-                <element signature="e#3880#3995#0" expanded="false" />
-                <element signature="e#4058#4815#0" expanded="false" />
-                <element signature="e#4085#4262#0" expanded="false" />
-                <element signature="e#4198#4248#0" expanded="false" />
-                <element signature="e#4365#4648#0" expanded="false" />
-                <element signature="e#4466#4599#0" expanded="false" />
-                <element signature="e#4683#4805#0" expanded="false" />
-                <element signature="e#4892#5724#0" expanded="false" />
-                <element signature="e#4919#5183#0" expanded="false" />
-                <element signature="e#5020#5169#0" expanded="false" />
-                <element signature="e#5286#5569#0" expanded="false" />
-                <element signature="e#5387#5520#0" expanded="false" />
-                <element signature="e#5604#5714#0" expanded="false" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h1#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#1;n#div#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="companyManagementLocationsController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/js/companyManagementLocationsController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="414">
+              <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="61" column="7" selection-start-line="61" selection-start-column="7" selection-end-line="61" selection-end-column="7" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -162,16 +139,18 @@
         <option value="$PROJECT_DIR$/public/js/homeController.js" />
         <option value="$PROJECT_DIR$/public/js/userIntersection.js" />
         <option value="$PROJECT_DIR$/public/partials/home.html" />
-        <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/public/stylesheets/style.css" />
-        <option value="$PROJECT_DIR$/public/app.js" />
         <option value="$PROJECT_DIR$/public/partials/companyManagement.html" />
         <option value="$PROJECT_DIR$/public/js/homeService.js" />
         <option value="$PROJECT_DIR$/public/js/companyService.js" />
         <option value="$PROJECT_DIR$/public/js/loginService.js" />
         <option value="$PROJECT_DIR$/routes/index.js" />
-        <option value="$PROJECT_DIR$/public/js/companyManagementController.js" />
         <option value="$PROJECT_DIR$/public/partials/userIntersection.html" />
+        <option value="$PROJECT_DIR$/public/app.js" />
+        <option value="$PROJECT_DIR$/public/js/companyManagementController.js" />
+        <option value="$PROJECT_DIR$/public/index.html" />
+        <option value="$PROJECT_DIR$/public/js/companyManagementLocationsController.js" />
+        <option value="$PROJECT_DIR$/public/partials/companyManagementLocations.html" />
         <option value="$PROJECT_DIR$/public/js/userIntersectionController.js" />
       </list>
     </option>
@@ -894,7 +873,7 @@
       <workItem from="1480918191254" duration="737000" />
       <workItem from="1480961198216" duration="24904000" />
       <workItem from="1480988003471" duration="2446000" />
-      <workItem from="1480990684328" duration="4851000" />
+      <workItem from="1480990684328" duration="5515000" />
     </task>
     <task id="LOCAL-00001" summary="Did some more updates. The home page should be good to go except for the fact that we still need real datapoints.">
       <created>1478020250509</created>
@@ -952,11 +931,18 @@
       <option name="project" value="LOCAL" />
       <updated>1480991522504</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Finished up a few todo's">
+      <created>1481002332413</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1481002332413</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57675000" />
+    <option name="totallyTimeSpent" value="58339000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1047,7 +1033,8 @@
     <MESSAGE value="Fixed a few things" />
     <MESSAGE value="positioning" />
     <MESSAGE value="Added in some error checking" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added in some error checking" />
+    <MESSAGE value="Finished up a few todo's" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished up a few todo's" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1056,21 +1043,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/js/loginService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/homeService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="666">
-          <caret line="37" column="109" selection-start-line="37" selection-start-column="109" selection-end-line="37" selection-end-column="109" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1422">
@@ -1792,17 +1764,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="622">
-          <caret line="54" column="50" selection-start-line="54" selection-start-column="50" selection-end-line="54" selection-end-column="50" />
-          <folding>
-            <element signature="e#561#568#0" expanded="false" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/angular/angular.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -1936,14 +1897,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/companyManagementController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="685">
-          <caret line="120" column="0" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/companyService.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="522">
@@ -2042,18 +1995,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/loginService.js">
+    <entry file="file://$PROJECT_DIR$/public/partials/userIntersection.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
+        <state relative-caret-position="244">
+          <caret line="24" column="14" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h1#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="61" column="7" selection-start-line="61" selection-start-column="7" selection-end-line="61" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/companyManagementLocationsController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/partials/companyManagementLocations.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h1#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/companyManagementController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="41" column="9" selection-start-line="41" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/partials/companyManagement.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="49" column="16" selection-start-line="49" selection-start-column="16" selection-end-line="51" selection-end-column="22" />
+        <state relative-caret-position="126">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#div#0;n#!!top" expanded="true" />
@@ -2072,29 +2067,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="40" column="18" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
+        <state relative-caret-position="336">
+          <caret line="42" column="34" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/partials/userIntersection.html">
+    <entry file="file://$PROJECT_DIR$/public/js/loginService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="24" column="14" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h1#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="270">
+          <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/userIntersectionController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="108" column="13" selection-start-line="108" selection-start-column="13" selection-end-line="108" selection-end-column="13" />
+        <state relative-caret-position="415">
+          <caret line="106" column="62" selection-start-line="106" selection-start-column="62" selection-end-line="106" selection-end-column="62" />
           <folding>
             <element signature="e#882#1347#0" expanded="false" />
             <element signature="e#1002#1336#0" expanded="false" />
@@ -2106,7 +2096,7 @@
             <element signature="e#1630#2187#0" expanded="false" />
             <element signature="e#2328#2425#0" expanded="false" />
             <element signature="e#2460#2560#0" expanded="false" />
-            <element signature="e#3795#4046#0" expanded="false" />
+            <element signature="e#3779#4030#0" expanded="false" />
           </folding>
         </state>
       </provider>

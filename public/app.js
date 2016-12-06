@@ -37,8 +37,10 @@
                 controllerAs: 'vm'
             })
             .state('companyManagementLocations', {
-                url: '/company_management/locations/id/:companyId'
-                //TODO Finish this
+                url: '/company_management/locations/id/:companyId',
+                templateUrl: 'partials/companyManagementLocations.html',
+                controller: 'companyManagementLocationsController',
+                controllerAs: 'vm'
             })
             .state('login', {
                 url: '/login',

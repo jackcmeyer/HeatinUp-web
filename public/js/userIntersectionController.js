@@ -104,7 +104,7 @@
                     vm.heatmapLayer.setData(dataArray);
                 }
                 else {
-                    vm.error = "The users have never encountered each other.";
+                    vm.error = "No intersections on this day";
                 }
             }
 
