@@ -11,6 +11,7 @@
             createNewCompany: createNewCompany,
             deleteCompany: deleteCompany,
             addMemberToCompany: addMemberToCompany,
+            removeMemberFromCompany: removeMemberFromCompany,
             getCompaniesForOwner: getCompaniesForOwner,
             getAllLocationDataForCompany: getAllLocationDataForCompany,
             getAllLocationDataForCompanyByDate: getAllLocationDataForCompanyByDate
@@ -60,12 +61,12 @@
         }
 
         //Add a member to the company via username
-        function addMemberToCompany(givenCompanyId, givenUsername){
+        function addMemberToCompany(givenCompanyID, givenUsername){
             return $http({
                 method: 'post',
                 url: '/api/addMemberToCompany',
                 data:{
-                    companyID: givenCompanyId,
+                    companyID: givenCompanyID,
                     username: givenUsername
                 }
             })
@@ -76,6 +77,29 @@
                 return response.data;
             }
             function fail(error){
+                console.log("Error in addMemberToCompany()");
+                return error;
+            }
+        }
+
+        //delete member from company
+        function removeMemberFromCompany(givenCompanyID, givenUsername){
+            return $http({
+                method: 'post',
+                url: '/api/removeMemberFromCompany',
+                data:{
+                    companyID: givenCompanyID,
+                    username: givenUsername
+                }
+            })
+                .then(success)
+                .catch(fail);
+
+            function success(response){
+                return response.data;
+            }
+            function fail(error){
+                console.log("Error in removeMemberFromCompany()");
                 return error;
             }
         }
