@@ -72,18 +72,79 @@ router.post('/api/addNewLocation', function(req, res, next) {
   location.longitude = req.body.longitude;
   location.time = moment().format("MM-DD-YYYY");
 
-  console.log(location);
-
   location.save(function(err) {
     if(err){
       return next(err);
     }
     else {
-      return res.status(200).json({message: "Success"});
+
+        Company.find({}, function(error, results) {
+
+            var returnMembers = [];
+
+
+            if(error) {
+                console.log("Error finding company by user")
+                return;
+            }
+
+            else  {
+
+                // the following will check if
+                var teammates = [];
+                for(var i = 0; i < results.length; i++) {
+                    var members = results[i].members;
+                    console.log(members);
+                     for(var j = 0; j < members.length; j++) {
+                        if((teammates.indexOf(members[j]) > -1) || (members[j] === req.body.username)) {
+                            continue;
+                        }
+
+                        else {
+                            console.log(members[j]);
+                            teammates.push(members[j]);
+                        }
+                    }
+                }
+
+                console.log("Members to Check: " + teammates);
+
+                Location.find({time: location.time, latitude: req.body.latitude, longitude: req.body.longitude}, function(error, results) {
+                    if(error) {
+                        return;
+                    }
+
+                    else {
+                        for(var a = 0; a < results.length; a++) {
+                            if (returnMembers.indexOf(results[a].username) > -1) {
+                               continue;
+                            }
+
+                            else {
+                                returnMembers.push(results[a].username);
+                            }
+                        }
+                    }
+
+                    return res.status(200).json({message: "Success", "inSameSpot": returnMembers});
+
+                });
+            }
+        });
+
     }
   });
 
 });
+
+/**
+ * Returns company information for the company that user is apart of.
+ */
+var usersInSameSpot = function(username) {
+
+
+
+}
 
 // LOCATION STUFF
 
