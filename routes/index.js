@@ -78,10 +78,9 @@ router.post('/api/addNewLocation', function(req, res, next) {
     }
     else {
 
+        // check if the user's teammates in their companies are currentl in the same location.
         Company.find({}, function(error, results) {
-
             var returnMembers = [];
-
 
             if(error) {
                 console.log("Error finding company by user")
@@ -115,6 +114,9 @@ router.post('/api/addNewLocation', function(req, res, next) {
                     }
 
                     else {
+
+
+
                         for(var a = 0; a < results.length; a++) {
                             if (returnMembers.indexOf(results[a].username) > -1) {
                                continue;
@@ -126,7 +128,36 @@ router.post('/api/addNewLocation', function(req, res, next) {
                         }
                     }
 
-                    return res.status(200).json({message: "Success", "inSameSpot": returnMembers});
+
+                    Location.find({username: req.body.username},function(error, results) {
+                        var isSameLocationTooLong = true;
+
+                        if(error) {
+                            console.log("could not find location data");
+                            return;
+                        }
+
+                        else {
+                            if(results.length > 5) {
+                                for(var b = results.length -1 ; b > results.length - 6; b--) {
+                                    console.log(results[b]);
+
+                                    if((results[b].latitude != req.body.latitude) || (results[b].longitude != req.body.longitude)) {
+                                        isSameLocationTooLong = false;
+                                    }
+                                }
+                            }
+
+                            else {
+                                isSameLocationTooLong = false;
+                            }
+
+
+                            return res.status(200).json({message: "Success", "inSameSpot": returnMembers, "isSameLocationTooLong": isSameLocationTooLong});
+
+                        }
+                    });
+
 
                 });
             }
