@@ -81,6 +81,8 @@ router.post('/api/addNewLocation', function(req, res, next) {
         // check if the user's teammates in their companies are currentl in the same location.
         Company.find({}, function(error, results) {
             var returnMembers = [];
+            var username = req.body.username.replace(/['"]+/g, '');
+            console.log("USERNAME: " + username);
 
             if(error) {
                 console.log("Error finding company by user")
@@ -88,14 +90,17 @@ router.post('/api/addNewLocation', function(req, res, next) {
             }
 
             else  {
-
-                // the following will check if
                 var teammates = [];
                 for(var i = 0; i < results.length; i++) {
                     var members = results[i].members;
-                    console.log(members);
                      for(var j = 0; j < members.length; j++) {
-                        if((teammates.indexOf(members[j]) > -1) || (members[j] === req.body.username)) {
+                         console.log(members[j] + " vs. " + username);
+                         if((teammates.indexOf(members[j]) > -1)) {
+                            continue;
+                        }
+
+                        if(members[j] === username) {
+                             console.log("THEY'RE THE SAME");
                             continue;
                         }
 
@@ -114,12 +119,13 @@ router.post('/api/addNewLocation', function(req, res, next) {
                     }
 
                     else {
-
-
-
                         for(var a = 0; a < results.length; a++) {
                             if (returnMembers.indexOf(results[a].username) > -1) {
                                continue;
+                            }
+
+                            if(results[a].username === username) {
+                                continue;
                             }
 
                             else {
@@ -152,8 +158,22 @@ router.post('/api/addNewLocation', function(req, res, next) {
                                 isSameLocationTooLong = false;
                             }
 
+                            var inSameSpotMessage = "";
+                            var inSameSpotTooLongMessage = "";
 
-                            return res.status(200).json({message: "Success", "inSameSpot": returnMembers, "isSameLocationTooLong": isSameLocationTooLong});
+                            if(returnMembers.length > 0) {
+                                inSameSpotMessage = "You are currently in the same location as: "
+
+                                for(var i = 0; i < returnMembers.length; i++) {
+                                    inSameSpotMessage += returnMembers[i];
+                                }
+                            }
+
+                            if(isSameLocationTooLong) {
+                                inSameSpotTooLongMessage = "You have been in the same spot for more than a minute. Please move.";
+                            }
+
+                            return res.status(200).json({message: "Success", "inSameSpot": inSameSpotMessage, "isSameLocationTooLong": inSameSpotTooLongMessage});
 
                         }
                     });
