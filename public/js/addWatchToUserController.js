@@ -4,16 +4,23 @@
     angular.module('heatin_up')
         .controller("addWatchToUserController", addWatchToUserController);
 
-    // addWatchToUserController.$inject = [];
+    addWatchToUserController.$inject = ['addWatchToUserService', 'loginService', '$location', '$stateParams'];
     
-    function addWatchToUserController() {
+    function addWatchToUserController(addWatchToUserService, loginService, $location, $stateParams) {
         var vm = this;
+        vm.error = "";
+        vm.userCords = {nw: {}, ne: {}, sw: {}, se: {}};
         vm.mapProperties = {};
         vm.activate = activate;
+        vm.logout = logout;
+        vm.addWatch = addWatch;
 
         activate();
 
         function activate() {
+            if (!loginService.isLoggedIn())
+                $location.path('/login');
+
             vm.mapProperties = {
                 center: {
                     latitude: 42.03,
@@ -34,6 +41,70 @@
                 clickable: true,
                 draggable: true,
                 editable: true
+            };
+
+            if(!$stateParams.username)
+                return;
+
+            addWatchToUserService.getUser($stateParams.username)
+                .then(success)
+                .catch(fail);
+
+            function success(response) {
+                if(!response.topLeft)
+                    return;
+
+                vm.mapProperties.bounds.ne = response.topRight;
+                vm.mapProperties.bounds.sw = response.bottomLeft;
+
+                vm.userCords.nw.latitude = response.topLeft.latitude;
+                vm.userCords.nw.longitude = response.topLeft.longitude;
+                vm.userCords.ne.latitude = response.topRight.latitude;
+                vm.userCords.ne.longitude = response.topRight.longitude;
+                vm.userCords.sw.latitude = response.bottomLeft.latitude;
+                vm.userCords.sw.longitude = response.bottomLeft.longitude;
+                vm.userCords.se.latitude = response.bottomRight.latitude;
+                vm.userCords.se.longitude = response.bottomRight.longitude;
+            }
+
+            function fail(error) {
+                console.log(error);
+            }
+        }
+
+        function logout() {
+            loginService.logout();
+            $location.path('/login');
+        }
+        
+        function addWatch() {
+            if(!$stateParams.username)
+                return;
+
+            vm.error = "Working...";
+
+            addWatchToUserService.addUserWatch($stateParams.username, vm.mapProperties.bounds.sw, vm.mapProperties.bounds.ne)
+                .then(success)
+                .catch(fail);
+
+            function success(response) {
+                vm.error = "";
+
+                if(!response.topLeft)
+                    return;
+
+                vm.userCords.nw.latitude = response.topLeft.latitude;
+                vm.userCords.nw.longitude = response.topLeft.longitude;
+                vm.userCords.ne.latitude = response.topRight.latitude;
+                vm.userCords.ne.longitude = response.topRight.longitude;
+                vm.userCords.sw.latitude = response.bottomLeft.latitude;
+                vm.userCords.sw.longitude = response.bottomLeft.longitude;
+                vm.userCords.se.latitude = response.bottomRight.latitude;
+                vm.userCords.se.longitude = response.bottomRight.longitude;
+            }
+
+            function fail(error) {
+                console.log(error);
             }
         }
     }
