@@ -54,6 +54,43 @@ router.post('/api/login', function(req, res, next){
   })(req, res, next);
 });
 
+router.post('/api/addUserWatch', function(req, res, next) {
+    if(!req.body.username || !req.body.topLeft || !req.body.topRight || !req.body.bottomLeft || !req.body.bottomRight) {
+        return res.status(400).json({message: "Please fill out all fields"});
+    }
+
+    User.findOne({username: req.body.username}, function(error, result) {
+
+
+        if(error) {
+            return next(error);
+        }
+
+        else {
+            result.topLeft = req.body.topLeft;
+            result.topRight = req.body.topRight;
+            result.bottomLeft = req.body.bottomLeft;
+            result.bottomRight = req.body.bottomRight;
+
+            console.log(result);
+
+            result.save(function(error) {
+                if(error) {
+                    return next(error);
+                }
+
+                else {
+
+                    return res.status(200).json({message: "success"});
+                }
+            });
+        }
+    })
+
+
+}) ;
+
+
 /**
  * Adds a new location for a username
  *
@@ -188,14 +225,6 @@ router.post('/api/addNewLocation', function(req, res, next) {
 
 });
 
-/**
- * Returns company information for the company that user is apart of.
- */
-var usersInSameSpot = function(username) {
-
-
-
-}
 
 // LOCATION STUFF
 
