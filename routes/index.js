@@ -229,7 +229,45 @@ router.post('/api/addNewLocation', function(req, res, next) {
                                 inSameSpotTooLongMessage = "You have been in the same spot for more than a minute. Please move.";
                             }
 
-                            return res.status(200).json({message: "Success", "inSameSpot": inSameSpotMessage, "isSameLocationTooLong": inSameSpotTooLongMessage});
+
+                            User.findOne({username: req.body.username}, function(error, result) {
+
+                                if(error) {
+                                    return next(error);
+                                }
+
+                                if(!result) {
+                                    return res.status(400).json({message: 'could not find user'});
+                                }
+
+
+                                var outsideArea = false;
+                                var outSideAreaMessage = "";
+                                if(req.body.longitude < result.topLeft.longitude) {
+                                    outsideArea = true;
+                                }
+
+                                if(req.body.longitude > result.topRight.longitude) {
+                                    outsideArea = true;
+                                }
+
+                                if(req.body.latitude > result.topRight.latitude) {
+                                    outsideArea = true;
+                                }
+
+                                if(req.body.latitude < result.bottomLeft.latitude) {
+                                    outsideArea = true;
+                                }
+
+                                if(outsideArea) {
+                                    outSideAreaMessage = "You are outside your area! Go back!"
+                                }
+
+                                return res.status(200).json({message: "Success", "inSameSpot": inSameSpotMessage,
+                                    "isSameLocationTooLong": inSameSpotTooLongMessage,
+                                    "isOutsideArea": outSideAreaMessage});
+                            });
+
 
                         }
                     });
