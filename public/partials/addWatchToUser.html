@@ -8,24 +8,27 @@
     <div class="alert alert-warning" role="alert">{{vm.error}}</div>
 </div>
 
-<div ng-if="vm.userCords.ne">
-    <div class="alert alert-warning" role="alert">
-        <h4>This user has a watch within these bounds</h4>
-        <p>NW Lat {{vm.userCords.nw.latitude}}</p>
-        <p>NW Lon {{vm.userCords.nw.longitude}}</p>
-        <p>NE Lat {{vm.userCords.ne.latitude}}</p>
-        <p>NE Lon {{vm.userCords.ne.longitude}}</p>
-        <p>SW Lat {{vm.userCords.sw.latitude}}</p>
-        <p>SW Lon {{vm.userCords.sw.longitude}}</p>
-        <p>SE Lat {{vm.userCords.se.latitude}}</p>
-        <p>SE Lon {{vm.userCords.se.longitude}}</p>
-    </div>
-</div>
-
 <div class="col-md-8">
     <ui-gmap-google-map center="vm.mapProperties.center" zoom="vm.mapProperties.zoom">
         <ui-gmap-rectangle bounds='vm.mapProperties.bounds' clickable='vm.mapProperties.clickable' draggable='vm.mapProperties.draggable' editable='vm.mapProperties.editable' visible='vm.mapProperties.visible'></ui-gmap-rectangle>
     </ui-gmap-google-map>
 </div>
+<div class="col-md-4">
+    <button class="btn btn-primary" ng-click="vm.addWatch()">Add Watch Here</button>
 
-<button class="btn btn-primary" ng-click="vm.addWatch()">Add Watch Here</button>
+    <br><br>
+
+    <div ng-if="vm.userCords.ne">
+        <div class="alert alert-warning" role="alert">
+            <h4>This user has a watch within these bounds</h4>
+            <p>NW Lat {{vm.userCords.nw.latitude}}</p>
+            <p>NW Lon {{vm.userCords.nw.longitude}}</p>
+            <p>NE Lat {{vm.userCords.ne.latitude}}</p>
+            <p>NE Lon {{vm.userCords.ne.longitude}}</p>
+            <p>SW Lat {{vm.userCords.sw.latitude}}</p>
+            <p>SW Lon {{vm.userCords.sw.longitude}}</p>
+            <p>SE Lat {{vm.userCords.se.latitude}}</p>
+            <p>SE Lon {{vm.userCords.se.longitude}}</p>
+        </div>
+    </div>
+</div>

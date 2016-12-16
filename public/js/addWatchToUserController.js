@@ -47,10 +47,11 @@
                 .catch(fail);
 
             function success(response) {
-                console.log(response);
-
                 if(!response.topLeft)
                     return;
+
+                vm.mapProperties.bounds.ne = response.topRight;
+                vm.mapProperties.bounds.sw = response.bottomLeft;
 
                 vm.userCords.nw.latitude = response.topLeft.latitude;
                 vm.userCords.nw.longitude = response.topLeft.longitude;
