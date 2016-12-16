@@ -37,5 +37,14 @@
         </div>
     </form>
 
-    <button style="margin-top: 10px" class="btn btn-success">Show Timelapse</button>
+    <button style="margin-top: 10px" class="btn btn-success" ng-click="vm.toggleTimelapse()" ng-if="!vm.timelapseOn">Start Timelapse</button>
+    <button style="margin-top: 10px" class="btn btn-success" ng-click="vm.toggleTimelapse()" ng-if="vm.timelapseOn">Stop Timelapse</button>
+    <div class="row" ng-if="vm.timelapseOn">
+        <h4>Speed
+            <span ng-if="vm.speed < 1">Fast</span>
+            <span ng-if="vm.speed >= 1 && vm.speed < 2">Medium</span>
+            <span ng-if="vm.speed >= 2">Slow</span>
+        </h4>
+        <input style="transform: rotateY(180deg)" type="range" min="0.1" max="3.0" step="0.1" value="1.0" ng-model="vm.speed"/>
+    </div>
 </div>

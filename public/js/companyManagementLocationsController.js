@@ -12,6 +12,11 @@
         vm.heatmapLayer = {};
         vm.date = {month: "", day: "", year: ""};
         vm.dateFilter = false;
+        vm.timelapseOn = false;
+        vm.speed = 1.0;
+        vm.i = 0;
+        vm.recursiveDataArray = [];
+        vm.recrusiveLoop = recrusiveLoop;
         vm.toggleHeatmap = toggleHeatmap;
         vm.changeGradient = changeGradient;
         vm.changeRadius = changeRadius;
@@ -20,6 +25,7 @@
         vm.logout = logout;
         vm.filterByDate = filterByDate;
         vm.resetDates = resetDates;
+        vm.toggleTimelapse = toggleTimelapse;
 
         activate();
 
@@ -146,6 +152,43 @@
             function fail(error) {
                 console.log(error);
             }
+        }
+
+        function toggleTimelapse() {
+            vm.timelapseOn = !vm.timelapseOn;
+
+            if(vm.timelapseOn) {
+                vm.heatmapLayer.setData([]);
+                vm.recrusiveLoop();
+            }
+            else
+            {
+                var dataArray = [];
+                for (var i = 0; i < vm.mapProperties.data.length; i++) {
+                    dataArray.push(new google.maps.LatLng(vm.mapProperties.data[i].latitude, vm.mapProperties.data[i].longitude));
+                }
+
+                vm.heatmapLayer.setData(dataArray);
+            }
+        }
+
+        function recrusiveLoop() {
+            setTimeout(function(){
+                if(!vm.timelapseOn)
+                    return;
+
+                vm.i++;
+                if(vm.i == vm.mapProperties.data.length)
+                {
+                    vm.i = 0;
+                    vm.recursiveDataArray = [];
+                }
+
+                vm.recursiveDataArray.push(new google.maps.LatLng(vm.mapProperties.data[vm.i].latitude, vm.mapProperties.data[vm.i].longitude));
+                vm.heatmapLayer.setData(vm.recursiveDataArray);
+
+                vm.recrusiveLoop();
+            }, vm.speed * 1000);
         }
     }
 })();
