@@ -80,7 +80,6 @@ router.post('/api/addUserWatch', function(req, res, next) {
                 }
 
                 else {
-
                     return res.status(200).json(result);
                 }
             });
@@ -88,7 +87,27 @@ router.post('/api/addUserWatch', function(req, res, next) {
     })
 
 
-}) ;
+});
+
+router.post('/api/getUser', function(req, res, next) {
+    if(!req.body.username) {
+        return res.status(400).json({message: 'Please fill out all fields'});
+    }
+
+    else {
+        User.findOne({username: req.body.username}, function(error, result) {
+           if(error) {
+               return next(error);
+           }
+
+           if(!result) {
+               return res.status(400).json({message: "No user found."});
+           }
+
+           return res.status(200).json(result);
+        });
+    }
+});
 
 
 /**
