@@ -81,7 +81,7 @@ router.post('/api/addUserWatch', function(req, res, next) {
 
                 else {
 
-                    return res.status(200).json({message: "success"});
+                    return res.status(200).json(result);
                 }
             });
         }
