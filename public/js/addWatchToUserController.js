@@ -4,19 +4,23 @@
     angular.module('heatin_up')
         .controller("addWatchToUserController", addWatchToUserController);
 
-    addWatchToUserController.$inject = ['addWatchToUserService', '$stateParams'];
+    addWatchToUserController.$inject = ['addWatchToUserService', 'loginService', '$location', '$stateParams'];
     
-    function addWatchToUserController(addWatchToUserService, $stateParams) {
+    function addWatchToUserController(addWatchToUserService, loginService, $location, $stateParams) {
         var vm = this;
         vm.error = "";
         vm.userCords = {nw: {}, ne: {}, sw: {}, se: {}};
         vm.mapProperties = {};
         vm.activate = activate;
+        vm.logout = logout;
         vm.addWatch = addWatch;
 
         activate();
 
         function activate() {
+            if (!loginService.isLoggedIn())
+                $location.path('/login');
+
             vm.mapProperties = {
                 center: {
                     latitude: 42.03,
@@ -66,6 +70,11 @@
             function fail(error) {
                 console.log(error);
             }
+        }
+
+        function logout() {
+            loginService.logout();
+            $location.path('/login');
         }
         
         function addWatch() {
