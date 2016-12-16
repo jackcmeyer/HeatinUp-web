@@ -42,6 +42,12 @@
                 controller: 'companyManagementLocationsController',
                 controllerAs: 'vm'
             })
+            .state('addWatchToUser', {
+                url: '/company_management/add_watch/username/:username',
+                templateUrl: 'partials/addWatchToUser.html',
+                controller: 'addWatchToUserController',
+                controllerAs: 'vm'
+            })
             .state('login', {
                 url: '/login',
                 templateUrl: 'partials/login.html',
