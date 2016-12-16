@@ -56,10 +56,11 @@
                     <span class="input-group-btn"><button class="btn btn-success" ng-click="vm.addMember()"><span class="glyphicon glyphicon-plus-sign"></span></button></span>
                 </div>
                 <hr>
-                <h4>Remove Users</h4>
+                <h4>User Management</h4>
                 <div ng-repeat="item in vm.companyMembers track by $index">
                     <div class="input-group">
                         <input class="form-control" placeholder="{{item}}" type="text" disabled/>
+                        <span class="input-group-btn"><button class="btn btn-primary" ng-click="vm.watchUser(item)"><span class="glyphicon glyphicon-eye-open"></span></button></span>
                         <span class="input-group-btn"><button class="btn btn-danger" ng-click="vm.removeMember(item)"><span class="glyphicon glyphicon-minus-sign"></span></button></span>
                     </div>
                 </div>

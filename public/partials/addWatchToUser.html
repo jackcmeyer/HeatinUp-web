@@ -1,0 +1,11 @@
+<div style="text-align: center">
+    <button class="btn btn-default" style="float: left;" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-menu-hamburger"></span></button>
+    <h1 style="display: inline-block;">Watch User</h1>
+    <button class="btn btn-default" style="float: right" ng-click="vm.logout()">Logout <span class="glyphicon glyphicon-log-out"></span></button>
+</div>
+
+<div class="col-md-8">
+    <ui-gmap-google-map center="vm.mapProperties.center" zoom="vm.mapProperties.zoom">
+        <ui-gmap-rectangle bounds='vm.mapProperties.bounds' clickable='vm.mapProperties.clickable' draggable='vm.mapProperties.draggable' editable='vm.mapProperties.editable' visible='vm.mapProperties.visible'></ui-gmap-rectangle>
+    </ui-gmap-google-map>
+</div>

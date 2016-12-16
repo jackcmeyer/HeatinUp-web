@@ -12,7 +12,7 @@
         vm.companies = [];
         vm.editingCompany = {};
         vm.companyMembers = [];
-        vm.error;
+        vm.error = "";
         vm.activate = activate;
         vm.logout = logout;
         vm.createCompany = createCompany;
@@ -20,6 +20,7 @@
         vm.viewLocationData = viewLocationData;
         vm.setEditingCompany = setEditingCompany;
         vm.addMember = addMember;
+        vm.watchUser = watchUser;
         vm.removeMember = removeMember;
 
         activate();
@@ -107,6 +108,11 @@
                 vm.companyMembers.push(vm.newUserName);
                 vm.newUserName = "";
             }
+        }
+
+        function watchUser(member) {
+            $(".modal-backdrop").hide();
+            $location.path('/company_management/add_watch/username/' + member);
         }
         
         function removeMember(member) {
