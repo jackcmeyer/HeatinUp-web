@@ -14,8 +14,9 @@
         <button class="btn btn-default btn-map" ng-click="vm.changeOpacity()">Change opacity</button>
     </div>
 
-    <ui-gmap-google-map center="vm.mapProperties.center" zoom="vm.mapProperties.zoom">
-        <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="vm.mapProperties.show" onCreated="vm.mapProperties.heatLayerCallback"></ui-gmap-layer>
+    <ui-gmap-google-map center="vm.heatmapProperties.center" zoom="vm.heatmapProperties.zoom">
+        <ui-gmap-layer namespace="visualization" type="HeatmapLayer" show="vm.heatmapProperties.show" onCreated="vm.heatmapProperties.heatLayerCallback"></ui-gmap-layer>
+        <ui-gmap-polyline path="vm.pathProperties.path" visible="vm.pathProperties.visible" static="true"></ui-gmap-polyline>
     </ui-gmap-google-map>
 </div>
 

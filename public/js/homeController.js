@@ -45,7 +45,7 @@
                 data: {},
                 heatLayerCallback: function (layer) {
                     vm.heatmapLayer = layer;
-                    // vm.heatmapLayer.map.panTo(new google.maps.LatLng(vm.mapProperties.updatedCenter.latitude, vm.mapProperties.updatedCenter.longitude));
+                    // vm.heatmapLayer.map.panTo(new google.maps.LatLng(vm.heatmapProperties.updatedCenter.latitude, vm.heatmapProperties.updatedCenter.longitude));
 
                     var dataArray = [];
                     for(var i = 0; i < vm.mapProperties.data.length; i++)

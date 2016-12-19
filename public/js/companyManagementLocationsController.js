@@ -8,7 +8,8 @@
     
     function companyManagementLocationsController(companyService, loginService, $location, $stateParams) {
         var vm = this;
-        vm.mapProperties = {};
+        vm.heatmapProperties = {};
+        vm.pathProperties = {};
         vm.heatmapLayer = {};
         vm.date = {month: "", day: "", year: ""};
         vm.dateFilter = false;
@@ -16,7 +17,7 @@
         vm.speed = 1.0;
         vm.i = 0;
         vm.recursiveDataArray = [];
-        vm.recrusiveLoop = recrusiveLoop;
+        vm.recursiveLoop = recursiveLoop;
         vm.toggleHeatmap = toggleHeatmap;
         vm.changeGradient = changeGradient;
         vm.changeRadius = changeRadius;
@@ -33,7 +34,7 @@
             if (!loginService.isLoggedIn())
                 $location.path('/login');
 
-            vm.mapProperties = {
+            vm.heatmapProperties = {
                 center: {
                     latitude: 42.038,
                     longitude: -93.644
@@ -48,11 +49,11 @@
                         .catch(fail);
 
                     function success(response) {
-                        vm.mapProperties.data = response;
+                        vm.heatmapProperties.data = response;
 
                         var dataArray = [];
-                        for (var i = 0; i < vm.mapProperties.data.length; i++) {
-                            dataArray.push(new google.maps.LatLng(vm.mapProperties.data[i].latitude, vm.mapProperties.data[i].longitude));
+                        for (var i = 0; i < vm.heatmapProperties.data.length; i++) {
+                            dataArray.push(new google.maps.LatLng(vm.heatmapProperties.data[i].latitude, vm.heatmapProperties.data[i].longitude));
                         }
 
                         vm.heatmapLayer.setData(dataArray);
@@ -63,6 +64,11 @@
                     }
                 }
             };
+
+            vm.pathProperties = {
+                path: [],
+                visible: false
+            };
         }
 
         function logout() {
@@ -71,7 +77,7 @@
         }
 
         function toggleHeatmap() {
-            vm.mapProperties.show = !vm.mapProperties.show;
+            vm.heatmapProperties.show = !vm.heatmapProperties.show;
         }
 
         function changeGradient() {
@@ -114,11 +120,11 @@
 
             function success(response) {
                 vm.dateFilter = true;
-                vm.mapProperties.data = response;
+                vm.heatmapProperties.data = response;
 
                 var dataArray = [];
-                for (var i = 0; i < vm.mapProperties.data.length; i++) {
-                    dataArray.push(new google.maps.LatLng(vm.mapProperties.data[i].latitude, vm.mapProperties.data[i].longitude));
+                for (var i = 0; i < vm.heatmapProperties.data.length; i++) {
+                    dataArray.push(new google.maps.LatLng(vm.heatmapProperties.data[i].latitude, vm.heatmapProperties.data[i].longitude));
                 }
 
                 vm.heatmapLayer.setData(dataArray);
@@ -139,11 +145,11 @@
                 vm.date.month = "";
                 vm.date.day = "";
                 vm.date.year = "";
-                vm.mapProperties.data = response;
+                vm.heatmapProperties.data = response;
 
                 var dataArray = [];
-                for (var i = 0; i < vm.mapProperties.data.length; i++) {
-                    dataArray.push(new google.maps.LatLng(vm.mapProperties.data[i].latitude, vm.mapProperties.data[i].longitude));
+                for (var i = 0; i < vm.heatmapProperties.data.length; i++) {
+                    dataArray.push(new google.maps.LatLng(vm.heatmapProperties.data[i].latitude, vm.heatmapProperties.data[i].longitude));
                 }
 
                 vm.heatmapLayer.setData(dataArray);
@@ -158,36 +164,36 @@
             vm.timelapseOn = !vm.timelapseOn;
 
             if(vm.timelapseOn) {
-                vm.heatmapLayer.setData([]);
-                vm.recrusiveLoop();
+                vm.heatmapProperties.show = false;
+                vm.pathProperties.visible = true;
+
+                vm.recursiveLoop();
             }
             else
             {
-                var dataArray = [];
-                for (var i = 0; i < vm.mapProperties.data.length; i++) {
-                    dataArray.push(new google.maps.LatLng(vm.mapProperties.data[i].latitude, vm.mapProperties.data[i].longitude));
-                }
-
-                vm.heatmapLayer.setData(dataArray);
+                vm.heatmapProperties.show = true;
+                vm.pathProperties.visible = false;
+                vm.recursiveDataArray = [];
+                vm.i = 0;
             }
         }
 
-        function recrusiveLoop() {
+        function recursiveLoop() {
             setTimeout(function(){
                 if(!vm.timelapseOn)
                     return;
 
                 vm.i++;
-                if(vm.i == vm.mapProperties.data.length)
+                if(vm.i == vm.heatmapProperties.data.length)
                 {
                     vm.i = 0;
                     vm.recursiveDataArray = [];
                 }
 
-                vm.recursiveDataArray.push(new google.maps.LatLng(vm.mapProperties.data[vm.i].latitude, vm.mapProperties.data[vm.i].longitude));
-                vm.heatmapLayer.setData(vm.recursiveDataArray);
+                vm.recursiveDataArray.push(new google.maps.LatLng(vm.heatmapProperties.data[vm.i].latitude, vm.heatmapProperties.data[vm.i].longitude));
+                vm.pathProperties.path = vm.recursiveDataArray.slice(0);
 
-                vm.recrusiveLoop();
+                vm.recursiveLoop();
             }, vm.speed * 1000);
         }
     }
